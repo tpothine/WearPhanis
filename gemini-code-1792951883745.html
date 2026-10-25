@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wearphanis | Luxury Indian Jewellery Rentals NJ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --burgundy: #520d1c;
+      --deep-wine: #360611;
+      --gold: #d4af37;
+      --cream: #faf7f2;
+      --card-bg: #ffffff;
+      --text: #2d2a29;
+      --text-muted: #6b6664;
+      --border: #e8e2d8;
+      --danger: #b91c1c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+    h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; }
+
+    /* Nav */
+    header { background: var(--deep-wine); color: var(--cream); padding: 1rem 5%; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--gold); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.8rem; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: 1.5px; }
+    nav a { color: var(--cream); text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover, nav button:hover { color: var(--gold); }
+    .admin-link-btn { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 0.35rem 0.8rem; border-radius: 4px; font-size: 0.85rem; cursor: pointer; margin-left: 1.5rem; }
+
+    /* Hero */
+    .hero { background: linear-gradient(rgba(54, 6, 17, 0.85), rgba(82, 13, 28, 0.9)), url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=80') center/cover; color: var(--cream); text-align: center; padding: 4.5rem 1.5rem; }
+    .hero h1 { font-size: 3.2rem; margin-bottom: 1rem; color: #fff; }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; color: #f0e6d6; }
+    .badge-pill { display: inline-block; background: rgba(212, 175, 55, 0.2); border: 1px solid var(--gold); color: var(--gold); padding: 0.35rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; text-transform: uppercase; }
+
+    /* Container */
+    .section { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .section-title { text-align: center; font-size: 2.5rem; color: var(--burgundy); margin-bottom: 0.75rem; }
+    .section-sub { text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; }
+
+    /* Catalog Grid */
+    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 2rem; }
+    .card { background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; transition: transform 0.2s; position: relative; }
+    .card:hover { transform: translateY(-4px); }
+    .card-img-wrap { position: relative; width: 100%; height: 280px; overflow: hidden; background: #eae4da; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-title { font-size: 1.4rem; color: var(--burgundy); margin-bottom: 0.5rem; }
+    .pricing-row { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1rem; }
+    .rent-price { font-size: 1.35rem; font-weight: 700; color: var(--text); }
+    .deposit-badge { font-size: 0.8rem; background: #f4eee1; color: var(--burgundy); padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600; }
+    .btn { display: inline-block; width: 100%; background: var(--burgundy); color: white; text-align: center; padding: 0.75rem; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; text-decoration: none; margin-top: auto; transition: background 0.2s; font-family: inherit; }
+    .btn:hover { background: var(--deep-wine); }
+    .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn-secondary:hover { background: #f2eee8; }
+    .btn-danger { background: var(--danger); }
+    .btn-danger:hover { background: #991b1b; }
+
+    /* Reservation Box */
+    .booking-panel { background: #fff; border: 2px solid var(--gold); border-radius: 8px; padding: 2rem; max-width: 800px; margin: 2rem auto; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.4rem; font-size: 0.9rem; }
+    .form-control { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 0.95rem; }
+    .radio-pill-group { display: flex; gap: 1rem; }
+    .radio-pill { flex: 1; border: 1px solid var(--border); padding: 0.75rem; border-radius: 6px; text-align: center; cursor: pointer; user-select: none; }
+    .radio-pill.active { border-color: var(--burgundy); background: #f9f1f2; font-weight: 600; color: var(--burgundy); }
+    .checkout-summary { background: #fdfaf6; border-radius: 6px; padding: 1.25rem; margin-top: 1.5rem; border: 1px dashed var(--gold); }
+    .summary-line { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .summary-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.15rem; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+
+    /* FAQ */
+    .faq-container { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 1rem; padding: 1.25rem; cursor: pointer; }
+    .faq-question { font-weight: 600; font-size: 1.1rem; color: var(--burgundy); display: flex; justify-content: space-between; }
+    .faq-answer { display: none; margin-top: 0.75rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid #f4ede3; padding-top: 0.75rem; }
+    .faq-item.active .faq-answer { display: block; }
+
+    /* Modal / Admin Drawer */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 1000; justify-content: center; align-items: center; padding: 1.5rem; overflow-y: auto; }
+    .modal-overlay.active { display: flex; }
+    .modal-content { background: #fff; width: 100%; max-width: 650px; border-radius: 8px; padding: 2rem; border-top: 4px solid var(--gold); max-height: 90vh; overflow-y: auto; }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
+    .img-preview-box { width: 100%; height: 180px; border: 2px dashed var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; background: #faf8f5; margin-top: 0.5rem; overflow: hidden; }
+    .img-preview-box img { width: 100%; height: 100%; object-fit: cover; }
+    
+    /* Footer */
+    footer { background: var(--deep-wine); color: #f4eee1; padding: 3rem 1.5rem 1.5rem; text-align: center; font-size: 0.9rem; border-top: 2px solid var(--gold); }
+    footer a { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo serif">WEARPHANIS</a>
+      <nav>
+        <a href="#collection">Collection</a>
+        <a href="#booking">Reserve</a>
+        <a href="#faq">FAQ</a>
+        <button class="admin-link-btn" onclick="openAdminModal()">⚙️ Inventory Manager</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <span class="badge-pill">Central New Jersey Hub • Edison Local Pickup &amp; US Shipping</span>
+    <h1>Wear the Look. Skip the Full Price.</h1>
+    <p>High-grade Kundan, Polki, and temple jewellery sets for weddings, sangeets, and celebrations across the Tri-State area.</p>
+    <a href="#collection" class="btn" style="width: auto; padding: 0.85rem 2.2rem; background: var(--gold); color: var(--deep-wine); font-weight: 700;">Explore Catalog</a>
+  </section>
+
+  <!-- Collection Catalog -->
+  <section class="section" id="collection">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h2 class="section-title" style="text-align: left; margin: 0;">Curated Rental Sets</h2>
+        <p style="color: var(--text-muted); margin-top: 0.25rem;">Standard 5-day rental window (Thursday to Monday). 100% refundable deposits.</p>
+      </div>
+      <button class="btn" style="width: auto; padding: 0.6rem 1.2rem; font-size: 0.9rem; background: var(--gold); color: var(--deep-wine);" onclick="openAddItemModal()">+ Add New Piece</button>
+    </div>
+    
+    <!-- Dynamic Catalog Grid populated by JavaScript -->
+    <div class="catalog-grid" id="catalogGrid"></div>
+  </section>
+
+  <!-- Interactive Reservation Panel -->
+  <section class="section" id="booking" style="background: #fdfbf7;">
+    <h2 class="section-title">Configure Your Reservation</h2>
+    <p class="section-sub">Standard rental windows run 5 days. Returns must be postmarked or dropped off by Monday 12:00 PM.</p>
+
+    <div class="booking-panel">
+      <div class="form-group">
+        <label>Selected Item</label>
+        <input type="text" id="selectedItem" class="form-control" value="Select an item above" readonly>
+      </div>
+
+      <div class="form-group">
+        <label>Select Rental Start Date (Thursday Arrival)</label>
+        <input type="date" id="startDate" class="form-control" onchange="calculateDates()">
+        <small id="dateHelper" style="color: var(--text-muted); display: block; margin-top: 0.35rem;">Standard 5-day cycle: Ends Monday at 12:00 PM.</small>
+      </div>
+
+      <div class="form-group">
+        <label>Delivery or Pickup Preference</label>
+        <div class="radio-pill-group">
+          <div class="radio-pill active" id="pillPickup" onclick="setFulfillment('pickup')">
+            <strong>Central NJ Pickup (Free)</strong><br><small>Edison / Route 27 Hub</small>
+          </div>
+          <div class="radio-pill" id="pillShip" onclick="setFulfillment('ship')">
+            <strong>USPS / UPS Ground (+$15)</strong><br><small>Includes Prepaid Return Label</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 1.5rem;">
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal; font-size: 0.9rem; cursor: pointer;">
+          <input type="checkbox" id="termsCheck" onchange="toggleCheckoutBtn()">
+          I agree to the <a href="#" style="color: var(--burgundy); font-weight: 600;" onclick="alert('Wearphanis Rental Agreement Terms:\n1. 5-day possession (Thursday to Monday 12 PM).\n2. Deposit refunded within 48h of undamaged return.\n3. Keep away from water and direct perfume spray.\n4. $25/day late fee if dropped off after Monday 12 PM.'); return false;">Jewellery Rental Agreement &amp; Care Policies</a>.
+        </label>
+      </div>
+
+      <div class="checkout-summary">
+        <div class="summary-line"><span>5-Day Rental Fee:</span> <span id="summaryRent">$0.00</span></div>
+        <div class="summary-line"><span>Refundable Security Deposit:</span> <span id="summaryDeposit">$0.00</span></div>
+        <div class="summary-line"><span>Fulfillment / Shipping:</span> <span id="summaryShipping">$0.00</span></div>
+        <div class="summary-total"><span>Total Charged Today:</span> <span id="summaryTotal" style="color: var(--burgundy);">$0.00</span></div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">*Security deposit is automatically refunded within 48–72 hours after intake inspection.</p>
+      </div>
+
+      <button id="checkoutBtn" class="btn" style="margin-top: 1.5rem; padding: 1rem; opacity: 0.5; cursor: not-allowed;" disabled onclick="processDemoCheckout()">Proceed to Secure Checkout</button>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">How does the 5-day rental window work? <span>+</span></div>
+        <div class="faq-answer">Your pieces arrive by Thursday evening (or are picked up locally in Central NJ). You wear them Friday through Sunday for your celebrations. The set must be postmarked back at USPS/UPS or dropped off locally by Monday at 12:00 PM.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">Do I need to clean or sanitize the set before returning? <span>+</span></div>
+        <div class="faq-answer">No! Please do not use water, soap, or ultrasonic cleaners. Liquids damage foil-backed Kundan and Polki. We handle all medical-grade sterilization of earring posts and specialized dry jewelers' cleaning in-house.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">When do I receive my security deposit back? <span>+</span></div>
+        <div class="faq-answer">Once your return is scanned at our NJ studio, we complete an inspection within 48 business hours. Your full deposit is automatically credited back to your original payment method.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">What if a small stone comes loose on the dance floor? <span>+</span></div>
+        <div class="faq-answer">Normal wear and tear is fully covered! If a small stone pops loose, just place it in the box with the piece. We never charge for minor, repairable stone resets.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="serif" style="font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 1.5px;">WEARPHANIS</p>
+    <p>Central New Jersey Hub • Edison, NJ 08820 • Serving NYC, NJ &amp; Nationwide</p>
+    <p style="margin-top: 1rem; font-size: 0.8rem; color: #a89f91;">&copy; 2026 Wearphanis LLC. All rights reserved.</p>
+  </footer>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- Modal 1: Add / Edit Item Modal -->
+  <div class="modal-overlay" id="itemModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="serif" style="font-size: 1.8rem; color: var(--burgundy);" id="modalTitle">Add New Jewellery Piece</h3>
+        <button class="close-btn" onclick="closeModal('itemModal')">&times;</button>
+      </div>
+
+      <form id="itemForm" onsubmit="saveInventoryItem(event)">
+        <input type="hidden" id="editItemId">
+
+        <div class="form-group">
+          <label>Piece Title *</label>
+          <input type="text" id="itemTitle" class="form-control" placeholder="e.g., Royal Meenakari Choker Set" required>
+        </div>
+
+        <div class="form-group">
+          <label>Upload Image * (From your Phone / Computer)</label>
+          <input type="file" id="itemImageFile" class="form-control" accept="image/*" onchange="handleImageUpload(event)">
+          <input type="hidden" id="itemImageData">
+          <div class="img-preview-box" id="imgPreview">
+            <span style="color: var(--text-muted); font-size: 0.85rem;">No image selected yet</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label>5-Day Rental Price ($) *</label>
+            <input type="number" id="itemRent" class="form-control" placeholder="85" min="10" required>
+          </div>
+          <div class="form-group">
+            <label>Refundable Deposit ($) *</label>
+            <input type="number" id="itemDeposit" class="form-control" placeholder="85" min="0" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Short Description / Pieces Included *</label>
+          <textarea id="itemDesc" class="form-control" rows="3" placeholder="Includes choker, matching drop earrings, and maang tikka with gold dori..." required></textarea>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('itemModal')">Cancel</button>
+          <button type="submit" class="btn" id="saveItemBtn">Save &amp; Publish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Admin Dashboard (Manage & Delete Catalog) -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-content" style="max-width: 800px;">
+      <div class="modal-header">
+        <h3 class="serif" style="font-size: 1.8rem; color: var(--burgundy);">Inventory Manager</h3>
+        <button class="close-btn" onclick="closeModal('adminModal')">&times;</button>
+      </div>
+
+      <div id="adminAuthLock">
+        <p style="margin-bottom: 1rem; font-size: 0.95rem; color: var(--text-muted);">Enter your Store Admin PIN to edit catalog items:</p>
+        <div style="display: flex; gap: 0.5rem; max-width: 320px;">
+          <input type="password" id="adminPinInput" class="form-control" placeholder="Default PIN: 1234">
+          <button class="btn" style="width: auto; padding: 0 1.5rem;" onclick="unlockAdmin()">Unlock</button>
+        </div>
+      </div>
+
+      <div id="adminPanelBody" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <span style="font-weight: 600;" id="adminItemCount">0 Items in Catalog</span>
+          <button class="btn" style="width: auto; padding: 0.4rem 1rem; font-size: 0.85rem;" onclick="openAddItemModal()">+ Add New Piece</button>
+        </div>
+        
+        <div id="adminTableContainer" style="overflow-x: auto;">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // Initial Seed Data
+    const DEFAULT_INVENTORY = [
+      {
+        id: 'item_1',
+        title: 'Noor Kundan Choker Set',
+        desc: 'Heavy uncut Kundan choker with dangling faux-seed pearls and matching oversized jhumkas.',
+        rent: 85,
+        deposit: 85,
+        image: 'https://images.unsplash.com/photo-1611591475879-c5c84d6b63fc?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'item_2',
+        title: 'Padmavati Raani Haar Set',
+        desc: 'Multi-layer emerald-bead royal necklace with matha patti and matching haathphools.',
+        rent: 125,
+        deposit: 125,
+        image: 'https://images.unsplash.com/photo-1600003014755-ba31aa59c4b6?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'item_3',
+        title: 'Temple Heritage Lakshmi Set',
+        desc: 'Antique matte gold-finished temple choker engraved with Goddess Lakshmi motif and matching jhumkas.',
+        rent: 75,
+        deposit: 75,
+        image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80'
+      }
+    ];
+
+    // LocalStorage Setup
+    function getInventory() {
+      const data = localStorage.getItem('wearphanis_inventory');
+      if (!data) {
+        localStorage.setItem('wearphanis_inventory', JSON.stringify(DEFAULT_INVENTORY));
+        return DEFAULT_INVENTORY;
+      }
+      return JSON.parse(data);
+    }
+
+    function saveInventoryToStorage(items) {
+      localStorage.setItem('wearphanis_inventory', JSON.stringify(items));
+      renderCatalog();
+      renderAdminTable();
+    }
+
+    // Render Public Catalog
+    function renderCatalog() {
+      const items = getInventory();
+      const grid = document.getElementById('catalogGrid');
+      grid.innerHTML = '';
+
+      if (items.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">No items in the catalog yet. Click "+ Add New Piece" to upload your first set.</p>';
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-img-wrap">
+            <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/600x400?text=Jewellery+Photo'">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${item.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">${item.desc}</p>
+            <div class="pricing-row">
+              <span class="rent-price">$${item.rent}</span> <span style="font-size: 0.85rem; color: var(--text-muted);">/ 5 Days</span>
+              <span class="deposit-badge">+$${item.deposit} Refundable Deposit</span>
+            </div>
+            <button class="btn" onclick="selectPiece('${item.title}', ${item.rent}, ${item.deposit})">Reserve This Set</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Handle Client-Side Image Upload & Compression
+    function handleImageUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const img = new Image();
+        img.src = event.target.result;
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 700;
+          const scaleSize = MAX_WIDTH / img.width;
+          canvas.width = MAX_WIDTH;
+          canvas.height = img.height * scaleSize;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+          document.getElementById('itemImageData').value = compressedDataUrl;
+          
+          const preview = document.getElementById('imgPreview');
+          preview.innerHTML = `<img src="${compressedDataUrl}" alt="Preview">`;
+        };
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Save (Add or Edit) Inventory Item
+    function saveInventoryItem(e) {
+      e.preventDefault();
+      const id = document.getElementById('editItemId').value;
+      const title = document.getElementById('itemTitle').value;
+      const rent = parseFloat(document.getElementById('itemRent').value);
+      const deposit = parseFloat(document.getElementById('itemDeposit').value);
+      const desc = document.getElementById('itemDesc').value;
+      const image = document.getElementById('itemImageData').value || 'https://via.placeholder.com/600x400?text=Jewellery+Photo';
+
+      let items = getInventory();
+
+      if (id) {
+        const index = items.findIndex(item => item.id === id);
+        if (index !== -1) {
+          items[index] = { ...items[index], title, rent, deposit, desc, image };
+        }
+      } else {
+        const newItem = {
+          id: 'item_' + Date.now(),
+          title,
+          rent,
+          deposit,
+          desc,
+          image
+        };
+        items.unshift(newItem);
+      }
+
+      saveInventoryToStorage(items);
+      closeModal('itemModal');
+      alert('Catalog updated successfully!');
+    }
+
+    // Delete Item
+    function deleteInventoryItem(id) {
+      if (confirm('Are you sure you want to delete this piece from your catalog?')) {
+        let items = getInventory();
+        items = items.filter(item => item.id !== id);
+        saveInventoryToStorage(items);
+      }
+    }
+
+    // Open Add Item Modal
+    function openAddItemModal() {
+      document.getElementById('itemForm').reset();
+      document.getElementById('editItemId').value = '';
+      document.getElementById('itemImageData').value = '';
+      document.getElementById('imgPreview').innerHTML = '<span style="color: var(--text-muted); font-size: 0.85rem;">No image selected yet</span>';
+      document.getElementById('modalTitle').innerText = 'Add New Jewellery Piece';
+      openModal('itemModal');
+    }
+
+    // Open Edit Item Modal
+    function openEditItemModal(id) {
+      const items = getInventory();
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+
+      document.getElementById('editItemId').value = item.id;
+      document.getElementById('itemTitle').value = item.title;
+      document.getElementById('itemRent').value = item.rent;
+      document.getElementById('itemDeposit').value = item.deposit;
+      document.getElementById('itemDesc').value = item.desc;
+      document.getElementById('itemImageData').value = item.image;
+      document.getElementById('imgPreview').innerHTML = `<img src="${item.image}">`;
+      document.getElementById('modalTitle').innerText = 'Edit Jewellery Piece';
+      
+      closeModal('adminModal');
+      openModal('itemModal');
+    }
+
+    // Admin Dashboard Render
+    function renderAdminTable() {
+      const items = getInventory();
+      document.getElementById('adminItemCount').innerText = `${items.length} Pieces in Inventory`;
+      const container = document.getElementById('adminTableContainer');
+
+      let html = `
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 0.5rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border); text-align: left;">
+              <th style="padding: 0.5rem;">Preview</th>
+              <th style="padding: 0.5rem;">Title</th>
+              <th style="padding: 0.5rem;">Rent / Deposit</th>
+              <th style="padding: 0.5rem; text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      items.forEach(item => {
+        html += `
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.5rem;">
+              <img src="${item.image}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+            </td>
+            <td style="padding: 0.5rem; font-weight: 600;">${item.title}</td>
+            <td style="padding: 0.5rem;">$${item.rent} / $${item.deposit}</td>
+            <td style="padding: 0.5rem; text-align: right;">
+              <button class="btn btn-secondary" style="width: auto; padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="openEditItemModal('${item.id}')">Edit</button>
+              <button class="btn btn-danger" style="width: auto; padding: 0.3rem 0.6rem; font-size: 0.8rem; margin-left: 0.3rem;" onclick="deleteInventoryItem('${item.id}')">Delete</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    }
+
+    function unlockAdmin() {
+      const pin = document.getElementById('adminPinInput').value;
+      if (pin === '1234') { 
+        document.getElementById('adminAuthLock').style.display = 'none';
+        document.getElementById('adminPanelBody').style.display = 'block';
+        renderAdminTable();
+      } else {
+        alert('Incorrect PIN. (Default PIN is 1234)');
+      }
+    }
+
+    function openAdminModal() {
+      openModal('adminModal');
+    }
+
+    // Modal Control Helpers
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    // Reservation / Booking Calculator
+    let currentRent = 0;
+    let currentDeposit = 0;
+    let shippingCost = 0;
+
+    function selectPiece(name, rent, deposit) {
+      document.getElementById('selectedItem').value = name;
+      currentRent = rent;
+      currentDeposit = deposit;
+      updateSummary();
+      window.location.hash = '#booking';
+    }
+
+    function setFulfillment(type) {
+      const pillPickup = document.getElementById('pillPickup');
+      const pillShip = document.getElementById('pillShip');
+      if (type === 'pickup') {
+        pillPickup.classList.add('active');
+        pillShip.classList.remove('active');
+        shippingCost = 0;
+      } else {
+        pillShip.classList.add('active');
+        pillPickup.classList.remove('active');
+        shippingCost = 15;
+      }
+      updateSummary();
+    }
+
+    function calculateDates() {
+      const start = document.getElementById('startDate').value;
+      if (!start) return;
+      const date = new Date(start + 'T00:00:00');
+      date.setDate(date.getDate() + 4);
+      const options = { weekday: 'short', month: 'short', day: 'numeric' };
+      document.getElementById('dateHelper').innerHTML = `Return deadline: <strong>${date.toLocaleDateString('en-US', options)} by 12:00 PM</strong>`;
+    }
+
+    function updateSummary() {
+      document.getElementById('summaryRent').innerText = `$${currentRent.toFixed(2)}`;
+      document.getElementById('summaryDeposit').innerText = `$${currentDeposit.toFixed(2)}`;
+      document.getElementById('summaryShipping').innerText = `$${shippingCost.toFixed(2)}`;
+      const total = currentRent + currentDeposit + shippingCost;
+      document.getElementById('summaryTotal').innerText = `$${total.toFixed(2)}`;
+    }
+
+    function toggleCheckoutBtn() {
+      const isChecked = document.getElementById('termsCheck').checked;
+      const btn = document.getElementById('checkoutBtn');
+      btn.disabled = !isChecked;
+      btn.style.opacity = isChecked ? '1' : '0.5';
+      btn.style.cursor = isChecked ? 'pointer' : 'not-allowed';
+    }
+
+    function toggleFaq(el) {
+      el.classList.toggle('active');
+      const span = el.querySelector('.faq-question span');
+      span.innerText = el.classList.contains('active') ? '−' : '+';
+    }
+
+    function processDemoCheckout() {
+      const item = document.getElementById('selectedItem').value;
+      const date = document.getElementById('startDate').value;
+      if (!date || currentRent === 0) {
+        alert('Please choose a jewellery set and rental start date.');
+        return;
+      }
+      alert(`Proceeding to Checkout:\nSet: ${item}\nDate: ${date}\nTotal Charged: $${(currentRent + currentDeposit + shippingCost).toFixed(2)}\n\n(Link your Stripe checkout link here!)`);
+    }
+
+    // Initialize Page
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCatalog();
+    });
+  </script>
+</body>
+</html>
