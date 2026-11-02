@@ -13,7 +13,8 @@
       --forest-light: #234231;
       --gold: #b38838;
       --gold-dark: #8c6721;
-      --card-white: #ffffff;
+      --danger: #9c2a2a;
+      --danger-bg: #fbebeb;
       --text-muted: #556b5e;
       --font-serif: Georgia, 'Times New Roman', serif;
       --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -34,7 +35,6 @@
       line-height: 1.5;
     }
 
-    /* Top Announcement */
     .top-strip {
       background: var(--forest);
       color: #e5ede7;
@@ -43,10 +43,9 @@
       padding: 8px 16px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    /* Solid Two-Tier Sticky Header */
     header {
       background: #ffffff;
       border-bottom: 2px solid var(--mint-border);
@@ -56,7 +55,6 @@
       box-shadow: 0 4px 15px rgba(20, 40, 29, 0.05);
     }
 
-    /* Tier 1: Brand & Key Utility */
     .header-main {
       max-width: 1360px;
       margin: 0 auto;
@@ -69,13 +67,14 @@
 
     .brand-logo {
       font-family: var(--font-serif);
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--forest);
       text-decoration: none;
       letter-spacing: 2px;
       text-transform: uppercase;
       line-height: 1.1;
+      cursor: pointer;
     }
     .brand-logo span {
       display: block;
@@ -120,26 +119,23 @@
       cursor: pointer;
     }
 
-    /* Tier 2: Dedicated Menu Bar - Always 100% Visible */
     .header-menu-bar {
       max-width: 1360px;
       margin: 0 auto;
       padding: 0 24px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
       white-space: nowrap;
     }
 
-    /* Native HTML Details Dropdown (Zero JS dependency to display) */
-    details.menu-dropdown {
+    .menu-dropdown {
       position: relative;
       display: inline-block;
     }
 
-    summary.menu-link, button.menu-link {
-      list-style: none;
+    .menu-btn {
       background: transparent;
       border: none;
       color: var(--forest);
@@ -153,27 +149,29 @@
       align-items: center;
       gap: 6px;
       border-bottom: 2px solid transparent;
-      user-select: none;
       font-family: var(--font-sans);
     }
-    summary.menu-link::-webkit-details-marker { display: none; }
-    summary.menu-link:hover, button.menu-link:hover, details[open] > summary.menu-link {
+    .menu-btn:hover, .menu-dropdown.active .menu-btn {
       color: var(--gold-dark);
       border-bottom-color: var(--gold-dark);
       background: var(--mint-bg);
     }
 
     .dropdown-box {
+      display: none;
       position: absolute;
       top: 100%;
       left: 0;
       background: #ffffff;
       border: 1px solid var(--mint-border);
       border-radius: 4px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
       min-width: 260px;
       padding: 8px 0;
       z-index: 2000;
+    }
+    .menu-dropdown.active .dropdown-box {
+      display: block;
     }
 
     .dropdown-box a {
@@ -182,13 +180,12 @@
       color: var(--forest);
       text-decoration: none;
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
     }
     .dropdown-box a:hover {
       background: var(--mint-panel);
       color: var(--gold-dark);
-      font-weight: 600;
     }
     .dropdown-divider {
       height: 1px;
@@ -196,68 +193,7 @@
       margin: 6px 0;
     }
 
-    /* Hero Section */
-    .hero {
-      max-width: 1360px;
-      margin: 28px auto 16px;
-      padding: 24px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      align-items: center;
-      gap: 40px;
-    }
-    .hero-eyebrow {
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 8px;
-      display: block;
-      font-weight: 700;
-    }
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.15;
-      color: var(--forest);
-      margin-bottom: 16px;
-    }
-    .hero p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      max-width: 520px;
-      margin-bottom: 24px;
-    }
-    .hero-badges {
-      display: flex;
-      gap: 20px;
-      border-top: 1px solid var(--mint-border);
-      padding-top: 18px;
-    }
-    .hero-badge-item strong {
-      display: block;
-      font-family: var(--font-serif);
-      font-size: 18px;
-      color: var(--forest);
-    }
-    .hero-badge-item span {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-img {
-      width: 100%;
-      height: 360px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--mint-border);
-      box-shadow: 0 14px 30px rgba(20, 40, 29, 0.08);
-    }
-
-    /* Container & Filter Bar */
-    .container { max-width: 1360px; margin: 0 auto; padding: 10px 24px 60px; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 24px; }
 
     .filter-panel {
       background: #ffffff;
@@ -269,7 +205,6 @@
       flex-wrap: wrap;
       gap: 16px;
       align-items: flex-end;
-      box-shadow: 0 4px 15px rgba(20, 40, 29, 0.03);
     }
     .filter-group { display: flex; flex-direction: column; gap: 4px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--forest); font-weight: 700; }
     .filter-group select, .filter-group input {
@@ -279,10 +214,9 @@
       font-size: 12px;
       background: var(--mint-bg);
       color: var(--forest);
-      min-width: 160px;
+      min-width: 180px;
     }
 
-    /* Product Grid */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -313,6 +247,7 @@
       font-size: 10px;
       padding: 3px 8px;
       border-radius: 3px;
+      font-weight: 600;
     }
     .product-info { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .badge {
@@ -357,7 +292,6 @@
       border-color: var(--gold-dark);
     }
 
-    /* Modals & Cart Drawer */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -373,7 +307,7 @@
       background: #ffffff;
       border: 1px solid var(--mint-border);
       width: 100%;
-      max-width: 920px;
+      max-width: 940px;
       max-height: 90vh;
       overflow-y: auto;
       border-radius: 6px;
@@ -429,50 +363,100 @@
     }
     .upload-preview-strip { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
     .upload-preview-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 3px; border: 1px solid var(--forest); }
+
+    /* Admin Manager Tabs & Delete Lists */
+    .admin-tab-nav {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid var(--mint-border);
+      margin-bottom: 20px;
+    }
+    .admin-tab-btn {
+      padding: 10px 18px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .admin-tab-btn.active {
+      color: var(--forest);
+      border-bottom-color: var(--forest);
+      background: var(--mint-bg);
+    }
+
+    .admin-tab-content { display: none; }
+    .admin-tab-content.active { display: block; }
+
+    .manage-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--mint-border);
+      background: var(--mint-bg);
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .btn-delete {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid #eababa;
+      padding: 6px 12px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+    .btn-delete:hover {
+      background: var(--danger);
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Announcement -->
   <div class="top-strip">
-    WearPhanis • Complimentary Nationwide Ground Shipping • 100% Refundable Security Deposit • 7-Day Curated Rentals
+    WearPhanis • Free Nationwide Ground Shipping • 100% Refundable Security Deposit • 7-Day Curated Rentals
   </div>
 
-  <!-- Bulletproof Two-Tier Header -->
   <header>
-    <!-- Tier 1: Logo & Utility Buttons -->
     <div class="header-main">
-      <a href="#" class="brand-logo" onclick="resetFilters()">
+      <div class="brand-logo" onclick="resetFilters()">
         WearPhanis
         <span>Luxury Indian Jewellery Vault</span>
-      </a>
+      </div>
       <div class="header-actions">
-        <button class="btn-admin" onclick="openModal('admin-modal')">+ Add Item / Category</button>
+        <button class="btn-admin" onclick="openAdminModal()">⚙ Admin Studio</button>
         <button class="btn-cart" onclick="toggleCart(true)">Rental Bag (<span id="cart-count">0</span>)</button>
       </div>
     </div>
 
-    <!-- Tier 2: Dedicated Navigation Row (Visible on All Devices) -->
+    <!-- Navigation Menu Row -->
     <div class="header-menu-bar">
       
-      <!-- 1. Native Categories Dropdown List -->
-      <details class="menu-dropdown">
-        <summary class="menu-link">All Jewellery ▾</summary>
+      <!-- 1. All Categories Dropdown -->
+      <div class="menu-dropdown" id="dropdown-categories">
+        <button class="menu-btn" onclick="toggleMenu('dropdown-categories')">
+          All Categories ▾
+        </button>
         <div class="dropdown-box" id="menu-categories-list">
-          <a onclick="filterByCategory('All')">✦ View All Pieces</a>
-          <div class="dropdown-divider"></div>
-          <a onclick="filterByCategory('Bridal Chokers & Necklaces')">Bridal Chokers & Necklaces</a>
-          <a onclick="filterByCategory('Kundan Jhumkas & Chandbalis')">Kundan Jhumkas & Chandbalis</a>
-          <a onclick="filterByCategory('Antique Bangles & Kadas')">Antique Bangles & Kadas</a>
-          <a onclick="filterByCategory('Matha Pattis & Maang Tikkas')">Matha Pattis & Maang Tikkas</a>
-          <a onclick="filterByCategory('Hathphools & Rings')">Hathphools & Rings</a>
-          <a onclick="filterByCategory('Groom Regal Accessories')">Groom Regal Accessories</a>
+          <!-- Dynamically updated -->
         </div>
-      </details>
+      </div>
 
-      <!-- 2. Native Wedding Roles Dropdown -->
-      <details class="menu-dropdown">
-        <summary class="menu-link">Wedding Roles ▾</summary>
+      <!-- 2. Wedding Roles Dropdown -->
+      <div class="menu-dropdown" id="dropdown-roles">
+        <button class="menu-btn" onclick="toggleMenu('dropdown-roles')">
+          Wedding Roles ▾
+        </button>
         <div class="dropdown-box">
           <a onclick="filterByRole('Bride')">Bride (Bridal Edits)</a>
           <a onclick="filterByRole('Groom')">Groom (Kantha & Kalgi)</a>
@@ -480,64 +464,34 @@
           <a onclick="filterByRole('Bridesmaid')">Bridesmaids</a>
           <a onclick="filterByRole('Guest')">Wedding Guests</a>
         </div>
-      </details>
+      </div>
 
-      <!-- 3. Native Collections Dropdown -->
-      <details class="menu-dropdown">
-        <summary class="menu-link">Collections ▾</summary>
+      <!-- 3. Collections Dropdown -->
+      <div class="menu-dropdown" id="dropdown-collections">
+        <button class="menu-btn" onclick="toggleMenu('dropdown-collections')">
+          Collections ▾
+        </button>
         <div class="dropdown-box">
           <a onclick="filterByCollection('Kundan')">Kundan Meenakari</a>
           <a onclick="filterByCollection('Polki')">Uncut Polki & Jadau</a>
           <a onclick="filterByCollection('Temple')">Temple 22K Antique Gold</a>
           <a onclick="filterByCollection('Diamond')">Diamond & CZ Fusion</a>
         </div>
-      </details>
+      </div>
 
-      <button class="menu-link" onclick="filterClearance()">Archive Sale</button>
-      <button class="menu-link" onclick="openModal('measuring-modal')">Size Guide</button>
-      <button class="menu-link" onclick="openModal('how-it-works-modal')">How It Works</button>
+      <button class="menu-btn" onclick="filterClearance()">Archive Sale</button>
+      <button class="menu-btn" onclick="openModal('measuring-modal')">Size Guide</button>
+      <button class="menu-btn" onclick="openModal('how-it-works-modal')">How It Works</button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div>
-      <span class="hero-eyebrow">Couture Indian Jewellery Rentals</span>
-      <h1>Adorn the Heritage of Kundan & Polki.</h1>
-      <p>
-        WearPhanis delivers museum-grade Indian jewellery nationwide.
-        Select your 7-day rental period, wear sanitized heirloom sets for your wedding functions, 
-        and return with our prepaid courier label.
-      </p>
-      <div class="hero-badges">
-        <div class="hero-badge-item">
-          <strong>7-Day Rentals</strong>
-          <span>Weekly extension increments</span>
-        </div>
-        <div class="hero-badge-item">
-          <strong>100% Refundable</strong>
-          <span>Deposit returned in 48h</span>
-        </div>
-        <div class="hero-badge-item">
-          <strong>In-House Sanitized</strong>
-          <span>Medical alcohol post care</span>
-        </div>
-      </div>
-    </div>
-    <div>
-      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1000&auto=format&fit=crop&q=80" alt="WearPhanis Kundan Set" class="hero-img">
-    </div>
-  </section>
-
-  <!-- Main View -->
   <main class="container">
-    
     <!-- Filter Panel -->
     <div class="filter-panel">
       <div class="filter-group">
-        <label>Category</label>
+        <label>Filter By Category</label>
         <select id="filter-type" onchange="applyFilters()">
-          <!-- Injected dynamically -->
+          <!-- Synchronized -->
         </select>
       </div>
       <div class="filter-group">
@@ -551,7 +505,7 @@
         </select>
       </div>
       <div class="filter-group">
-        <label>Wedding Role</label>
+        <label>Role</label>
         <select id="filter-role" onchange="applyFilters()">
           <option value="All">All Roles</option>
           <option value="Bride">Bride</option>
@@ -581,7 +535,7 @@
       <button class="modal-close" style="position: static;" onclick="toggleCart(false)">&times;</button>
     </div>
     <div class="cart-body" id="cart-items">
-      <!-- Injected dynamically -->
+      <!-- Items dynamically populated -->
     </div>
     <div class="cart-footer">
       <div style="font-size: 13px; margin-bottom: 6px; display: flex; justify-content: space-between;">
@@ -659,91 +613,122 @@
     </div>
   </div>
 
-  <!-- Admin Modal -->
+  <!-- Admin Studio Modal with Tab Controls for Add & Remove Operations -->
   <div class="modal-overlay" id="admin-modal">
-    <div class="modal-content" style="max-width: 700px;">
+    <div class="modal-content" style="max-width: 780px;">
       <button class="modal-close" onclick="closeModal('admin-modal')">&times;</button>
       <h3 style="margin-bottom: 16px; font-family: var(--font-serif); font-size:24px; color:var(--forest);">WearPhanis Admin Studio</h3>
       
-      <form id="admin-product-form" onsubmit="handleAdminSubmit(event)">
-        <div style="background: var(--mint-bg); padding: 16px; border-radius: 4px; margin-bottom: 18px; border: 1px solid var(--mint-border);">
-          <label style="font-weight: 700; font-size: 12px; margin-bottom: 8px; display: block; color:var(--forest); text-transform:uppercase;">Category Management</label>
+      <!-- Tab Headers -->
+      <div class="admin-tab-nav">
+        <button class="admin-tab-btn active" onclick="switchAdminTab('tab-add')">+ Add New Item</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('tab-categories')">Manage Categories</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('tab-items')">Manage Vault Items</button>
+      </div>
+
+      <!-- Tab 1: Add New Item -->
+      <div id="tab-add" class="admin-tab-content active">
+        <form id="admin-product-form" onsubmit="handleAdminSubmit(event)">
+          <div style="background: var(--mint-bg); padding: 16px; border-radius: 4px; margin-bottom: 18px; border: 1px solid var(--mint-border);">
+            <label style="font-weight: 700; font-size: 12px; margin-bottom: 8px; display: block; color:var(--forest); text-transform:uppercase;">Category Assignment</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div>
+                <span style="font-size: 11px; color: var(--text-muted);">Assign Existing Category:</span>
+                <select id="admin-category-select" style="margin-top: 4px;"></select>
+              </div>
+              <div>
+                <span style="font-size: 11px; color: var(--text-muted);">Or Create New Category:</span>
+                <input type="text" id="admin-new-category" placeholder="e.g. Royal Passa, Haar" style="margin-top: 4px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Jewellery Piece Title</label>
+            <input type="text" id="admin-title" required placeholder="e.g. Padmavati Uncut Polki Choker Set">
+          </div>
+
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div>
-              <span style="font-size: 11px; color: var(--text-muted);">Existing Category:</span>
-              <select id="admin-category-select" style="margin-top: 4px;"></select>
+            <div class="form-group">
+              <label>Collection / Finish</label>
+              <select id="admin-collection">
+                <option value="Kundan">Kundan Meenakari</option>
+                <option value="Polki">Polki / Jadau</option>
+                <option value="Temple">Temple Antique Gold</option>
+                <option value="Diamond">Diamond Fusion</option>
+              </select>
             </div>
-            <div>
-              <span style="font-size: 11px; color: var(--text-muted);">Or Add New Category to Menu:</span>
-              <input type="text" id="admin-new-category" placeholder="e.g. Royal Passa, Haar" style="margin-top: 4px;">
+            <div class="form-group">
+              <label>Wedding Role</label>
+              <select id="admin-role">
+                <option value="Bride">Bride</option>
+                <option value="Groom">Groom</option>
+                <option value="Mother of Bride">Mother of Bride</option>
+                <option value="Bridesmaid">Bridesmaid</option>
+                <option value="Guest">Guest</option>
+              </select>
             </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label>Jewellery Piece Title</label>
-          <input type="text" id="admin-title" required placeholder="e.g. Padmavati Uncut Polki Choker Set">
-        </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label>7-Day Base Rent ($)</label>
+              <input type="number" id="admin-rent" required value="180">
+            </div>
+            <div class="form-group">
+              <label>Weekly Ext ($)</label>
+              <input type="number" id="admin-ext" required value="50">
+            </div>
+            <div class="form-group">
+              <label>Deposit ($)</label>
+              <input type="number" id="admin-deposit" required value="180">
+            </div>
+          </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div class="form-group">
-            <label>Collection / Finish</label>
-            <select id="admin-collection">
-              <option value="Kundan">Kundan Meenakari</option>
-              <option value="Polki">Polki / Jadau</option>
-              <option value="Temple">Temple Antique Gold</option>
-              <option value="Diamond">Diamond Fusion</option>
-            </select>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label>Dimensions</label>
+              <input type="text" id="admin-dimensions" placeholder="e.g. Choker drop: 3 in">
+            </div>
+            <div class="form-group">
+              <label>Weight (Grams)</label>
+              <input type="text" id="admin-weight" placeholder="e.g. Set: 135g">
+            </div>
           </div>
-          <div class="form-group">
-            <label>Wedding Role</label>
-            <select id="admin-role">
-              <option value="Bride">Bride</option>
-              <option value="Groom">Groom</option>
-              <option value="Mother of Bride">Mother of Bride</option>
-              <option value="Bridesmaid">Bridesmaid</option>
-              <option value="Guest">Guest</option>
-            </select>
-          </div>
-        </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
-          <div class="form-group">
-            <label>7-Day Base Rent ($)</label>
-            <input type="number" id="admin-rent" required value="180">
+          <div style="background: var(--mint-bg); border: 1px dashed var(--mint-border); padding: 16px; border-radius: 4px; margin-bottom: 18px;">
+            <label style="font-weight: 700; font-size: 11px; text-transform:uppercase; display: block; margin-bottom: 4px; color:var(--forest);">
+              Multiple Pictures (Upload from device or URL)
+            </label>
+            <input type="file" id="admin-file-input" multiple accept="image/*" onchange="handleFileSelect(event)" style="margin-bottom: 10px;">
+            <input type="text" id="admin-img-urls" placeholder="Or enter comma-separated URLs: https://..., https://..." style="margin-bottom: 6px;">
+            <div id="upload-preview-container" class="upload-preview-strip"></div>
           </div>
-          <div class="form-group">
-            <label>Weekly Ext ($)</label>
-            <input type="number" id="admin-ext" required value="50">
-          </div>
-          <div class="form-group">
-            <label>Deposit ($)</label>
-            <input type="number" id="admin-deposit" required value="180">
-          </div>
-        </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div class="form-group">
-            <label>Dimensions</label>
-            <input type="text" id="admin-dimensions" placeholder="e.g. Choker drop: 3 in">
-          </div>
-          <div class="form-group">
-            <label>Weight (Grams)</label>
-            <input type="text" id="admin-weight" placeholder="e.g. Set: 135g">
-          </div>
-        </div>
+          <button type="submit" class="btn-reserve" style="background:var(--forest); color:#ffffff; font-weight:700;">Publish Item</button>
+        </form>
+      </div>
 
-        <div style="background: var(--mint-bg); border: 1px dashed var(--mint-border); padding: 16px; border-radius: 4px; margin-bottom: 18px;">
-          <label style="font-weight: 700; font-size: 11px; text-transform:uppercase; display: block; margin-bottom: 4px; color:var(--forest);">
-            Multiple Pictures (Upload from device or URL)
-          </label>
-          <input type="file" id="admin-file-input" multiple accept="image/*" onchange="handleFileSelect(event)" style="margin-bottom: 10px;">
-          <input type="text" id="admin-img-urls" placeholder="Or enter comma-separated URLs: https://..., https://..." style="margin-bottom: 6px;">
-          <div id="upload-preview-container" class="upload-preview-strip"></div>
+      <!-- Tab 2: Manage Categories (Remove functionality) -->
+      <div id="tab-categories" class="admin-tab-content">
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
+          Removing a category immediately removes it from the top navigation and filter menus. Items that were assigned to a deleted category will be moved to <strong>"Uncategorized"</strong>.
+        </p>
+        <div id="category-manager-list">
+          <!-- Populated dynamically -->
         </div>
+      </div>
 
-        <button type="submit" class="btn-reserve" style="background:var(--forest); color:#ffffff; font-weight:700;">Publish Item</button>
-      </form>
+      <!-- Tab 3: Manage Vault Items (Remove functionality) -->
+      <div id="tab-items" class="admin-tab-content">
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
+          Removing an item permanently deletes it from the active rental vault and grid.
+        </p>
+        <div id="item-manager-list">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -771,8 +756,7 @@
         weight: "Choker: 125g, Earrings: 18g each (Event Grade)",
         images: [
           "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1611591475155-42646261057b?w=800&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop&q=80"
+          "https://images.unsplash.com/photo-1611591475155-42646261057b?w=800&auto=format&fit=crop&q=80"
         ]
       },
       {
@@ -787,8 +771,7 @@
         dimensions: "Central Tikka: 2.2 in; Perimeter Band: 11.5 in",
         weight: "48g (Ultra-lightweight forehead band)",
         images: [
-          "https://images.unsplash.com/photo-1611591475155-42646261057b?w=800&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80"
+          "https://images.unsplash.com/photo-1611591475155-42646261057b?w=800&auto=format&fit=crop&q=80"
         ]
       },
       {
@@ -803,24 +786,7 @@
         dimensions: "Size 2.6 (Inner Diameter: 2.37 in)",
         weight: "74g per pair with handcrafted screw lock",
         images: [
-          "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&auto=format&fit=crop&q=80"
-        ]
-      },
-      {
-        id: "wp-04",
-        title: "Emerald Diamond CZ Fusion Collar Set",
-        category: "Bridal Chokers & Necklaces",
-        collection: "Diamond",
-        role: "Guest",
-        rentPrice: 75,
-        extPrice: 20,
-        deposit: 75,
-        dimensions: "Collar drop: 14 in",
-        weight: "62g set weight",
-        isClearance: true,
-        images: [
-          "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&auto=format&fit=crop&q=80"
+          "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop&q=80"
         ]
       }
     ];
@@ -828,28 +794,147 @@
     let cart = [];
     let pendingUploadedImages = [];
 
-    // Close open details dropdowns when clicking outside
+    function toggleMenu(id) {
+      const target = document.getElementById(id);
+      const isCurrentlyActive = target.classList.contains('active');
+      document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
+      if (!isCurrentlyActive) {
+        target.classList.add('active');
+      }
+    }
+
     document.addEventListener('click', function(e) {
-      if (!e.target.closest('details.menu-dropdown')) {
-        document.querySelectorAll('details.menu-dropdown').forEach(d => d.removeAttribute('open'));
+      if (!e.target.closest('.menu-dropdown')) {
+        document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
       }
     });
 
     function syncCategoryElements() {
+      const menuList = document.getElementById('menu-categories-list');
+      if (menuList) {
+        menuList.innerHTML = `<a onclick="filterByCategory('All')">✦ View All Pieces</a><div class="dropdown-divider"></div>` +
+          categories.map(c => `<a onclick="filterByCategory('${c}')">${c}</a>`).join('');
+      }
+
       const filterSelect = document.getElementById('filter-type');
-      filterSelect.innerHTML = `<option value="All">All Categories (${categories.length})</option>` +
-        categories.map(c => `<option value="${c}">${c}</option>`).join('');
+      if (filterSelect) {
+        filterSelect.innerHTML = `<option value="All">All Categories (${categories.length})</option>` +
+          categories.map(c => `<option value="${c}">${c}</option>`).join('');
+      }
 
       const adminSelect = document.getElementById('admin-category-select');
-      adminSelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+      if (adminSelect) {
+        adminSelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+      }
 
-      const menuList = document.getElementById('menu-categories-list');
-      menuList.innerHTML = `<a onclick="filterByCategory('All')">✦ View All Pieces</a><div class="dropdown-divider"></div>` +
-        categories.map(c => `<a onclick="filterByCategory('${c}')">${c}</a>`).join('');
+      renderCategoryManagerList();
+    }
+
+    function renderCategoryManagerList() {
+      const container = document.getElementById('category-manager-list');
+      if (!container) return;
+
+      if (categories.length === 0) {
+        container.innerHTML = `<p style="font-size:12px; color:var(--text-muted);">No custom categories present.</p>`;
+        return;
+      }
+
+      container.innerHTML = categories.map((cat, idx) => `
+        <div class="manage-list-item">
+          <div>
+            <strong style="font-size:13px; color:var(--forest);">${cat}</strong>
+            <span style="font-size:11px; color:var(--text-muted); display:block;">
+              ${products.filter(p => p.category === cat).length} items currently assigned
+            </span>
+          </div>
+          <button class="btn-delete" onclick="deleteCategory(${idx})">Remove Category</button>
+        </div>
+      `).join('');
+    }
+
+    function renderItemManagerList() {
+      const container = document.getElementById('item-manager-list');
+      if (!container) return;
+
+      if (products.length === 0) {
+        container.innerHTML = `<p style="font-size:12px; color:var(--text-muted);">Vault is empty.</p>`;
+        return;
+      }
+
+      container.innerHTML = products.map((item, idx) => `
+        <div class="manage-list-item">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <img src="${item.images[0]}" style="width:45px; height:45px; object-fit:cover; border-radius:3px; border:1px solid var(--mint-border);">
+            <div>
+              <strong style="font-size:13px; color:var(--forest);">${item.title}</strong>
+              <span style="font-size:11px; color:var(--text-muted); display:block;">
+                ${item.category} • $${item.rentPrice}/week
+              </span>
+            </div>
+          </div>
+          <button class="btn-delete" onclick="deleteItem('${item.id}')">Delete Item</button>
+        </div>
+      `).join('');
+    }
+
+    function deleteCategory(index) {
+      const categoryToRemove = categories[index];
+      if (confirm(`Are you sure you want to delete "${categoryToRemove}"? Any items under this category will be changed to "Uncategorized".`)) {
+        // Reassign affected items
+        products.forEach(p => {
+          if (p.category === categoryToRemove) {
+            p.category = "Uncategorized";
+          }
+        });
+        // Remove category
+        categories.splice(index, 1);
+        if (!categories.includes("Uncategorized") && products.some(p => p.category === "Uncategorized")) {
+          categories.push("Uncategorized");
+        }
+        syncCategoryElements();
+        renderCatalog();
+        renderItemManagerList();
+      }
+    }
+
+    function deleteItem(productId) {
+      const item = products.find(p => p.id === productId);
+      if (!item) return;
+
+      if (confirm(`Are you sure you want to permanently delete "${item.title}" from the inventory?`)) {
+        products = products.filter(p => p.id !== productId);
+        renderCatalog();
+        renderItemManagerList();
+        syncCategoryElements();
+      }
+    }
+
+    function switchAdminTab(tabId) {
+      document.querySelectorAll('.admin-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.admin-tab-content').forEach(content => content.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+
+      if (tabId === 'tab-categories') renderCategoryManagerList();
+      if (tabId === 'tab-items') renderItemManagerList();
+    }
+
+    function openAdminModal() {
+      renderCategoryManagerList();
+      renderItemManagerList();
+      openModal('admin-modal');
     }
 
     function renderCatalog(items = products) {
       const grid = document.getElementById('product-grid');
+      if (!grid) return;
+
+      if (items.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-muted);">No jewellery items found matching this selection.</div>`;
+        return;
+      }
+
       grid.innerHTML = items.map(p => `
         <div class="product-card">
           <div class="img-wrap">
@@ -873,6 +958,7 @@
 
     function openPDP(id) {
       const product = products.find(p => p.id === id);
+      if (!product) return;
       const container = document.getElementById('pdp-content');
       
       const d = new Date();
@@ -890,8 +976,8 @@
           <div style="margin-top:10px; font-size:12px; line-height:1.7; background:var(--mint-bg); border:1px solid var(--mint-border); padding:14px; border-radius:4px;">
             <strong style="color:var(--forest); display:block; margin-bottom:4px;">Vault Specifications:</strong>
             <p>• Category: ${product.category}</p>
-            <p>• Dimensions: ${product.dimensions}</p>
-            <p>• Weight: ${product.weight}</p>
+            <p>• Dimensions: ${product.dimensions || 'Custom Sizing'}</p>
+            <p>• Weight: ${product.weight || 'Standard Weight'}</p>
             <p>• Sanitization: Posts sterilized in alcohol; microfiber buffed Kundan foil.</p>
           </div>
         </div>
@@ -1001,26 +1087,28 @@
       }
 
       const newItem = {
-        id: "wp-" + (products.length + 1),
-        title: document.getElementById('admin-title').value,
+        id: "wp-" + (products.length + 1) + "-" + Date.now(),
+        title: document.getElementById('admin-title').value.trim(),
         category: selectedCategory,
         collection: document.getElementById('admin-collection').value,
         role: document.getElementById('admin-role').value,
-        rentPrice: parseFloat(document.getElementById('admin-rent').value),
-        extPrice: parseFloat(document.getElementById('admin-ext').value),
-        deposit: parseFloat(document.getElementById('admin-deposit').value),
-        dimensions: document.getElementById('admin-dimensions').value || "Custom Sizing",
-        weight: document.getElementById('admin-weight').value || "Standard Weight",
+        rentPrice: parseFloat(document.getElementById('admin-rent').value) || 150,
+        extPrice: parseFloat(document.getElementById('admin-ext').value) || 45,
+        deposit: parseFloat(document.getElementById('admin-deposit').value) || 150,
+        dimensions: document.getElementById('admin-dimensions').value.trim() || "Custom Sizing",
+        weight: document.getElementById('admin-weight').value.trim() || "Standard Weight",
         images: imageUrls
       };
 
       products.unshift(newItem);
       renderCatalog();
+      renderItemManagerList();
       closeModal('admin-modal');
 
       e.target.reset();
       pendingUploadedImages = [];
       document.getElementById('upload-preview-container').innerHTML = '';
+      
       alert(`Success! "${newItem.title}" published under "${selectedCategory}".`);
     }
 
@@ -1038,25 +1126,28 @@
     }
 
     function filterByCategory(cat) {
-      document.querySelectorAll('details.menu-dropdown').forEach(d => d.removeAttribute('open'));
+      document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
+      const select = document.getElementById('filter-type');
+      if (select) select.value = cat;
+
       if (cat === 'All') {
-        document.getElementById('filter-type').value = 'All';
         renderCatalog();
       } else {
-        document.getElementById('filter-type').value = cat;
         renderCatalog(products.filter(p => p.category === cat));
       }
     }
 
     function filterByRole(role) {
-      document.querySelectorAll('details.menu-dropdown').forEach(d => d.removeAttribute('open'));
-      document.getElementById('filter-role').value = role;
+      document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
+      const select = document.getElementById('filter-role');
+      if (select) select.value = role;
       renderCatalog(products.filter(p => p.role === role));
     }
 
     function filterByCollection(coll) {
-      document.querySelectorAll('details.menu-dropdown').forEach(d => d.removeAttribute('open'));
-      document.getElementById('filter-collection').value = coll;
+      document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
+      const select = document.getElementById('filter-collection');
+      if (select) select.value = coll;
       renderCatalog(products.filter(p => p.collection === coll));
     }
 
@@ -1065,9 +1156,9 @@
     }
 
     function resetFilters() {
-      document.getElementById('filter-type').value = 'All';
-      document.getElementById('filter-collection').value = 'All';
-      document.getElementById('filter-role').value = 'All';
+      if (document.getElementById('filter-type')) document.getElementById('filter-type').value = 'All';
+      if (document.getElementById('filter-collection')) document.getElementById('filter-collection').value = 'All';
+      if (document.getElementById('filter-role')) document.getElementById('filter-role').value = 'All';
       renderCatalog();
     }
 
@@ -1146,6 +1237,7 @@
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
+    // Init Execution
     syncCategoryElements();
     renderCatalog();
   </script>
