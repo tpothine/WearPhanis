@@ -126,8 +126,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      overflow-x: auto;
-      white-space: nowrap;
+      overflow: visible;
     }
 
     .menu-dropdown {
@@ -168,10 +167,13 @@
       box-shadow: 0 12px 30px rgba(0,0,0,0.15);
       min-width: 260px;
       padding: 8px 0;
-      z-index: 2000;
+      z-index: 9999;
     }
+    
     .menu-dropdown.active .dropdown-box {
-      display: block;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
 
     .dropdown-box a {
@@ -250,6 +252,7 @@
       font-weight: 600;
     }
     .product-info { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .badge-wrap { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
     .badge {
       display: inline-block;
       font-size: 10px;
@@ -261,7 +264,6 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 8px;
     }
     .product-title {
       font-family: var(--font-serif);
@@ -364,19 +366,19 @@
     .upload-preview-strip { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
     .upload-preview-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 3px; border: 1px solid var(--forest); }
 
-    /* Admin Manager Tabs & Delete Lists */
     .admin-tab-nav {
       display: flex;
-      gap: 10px;
+      gap: 6px;
       border-bottom: 2px solid var(--mint-border);
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
     .admin-tab-btn {
-      padding: 10px 18px;
+      padding: 10px 14px;
       background: transparent;
       border: none;
       border-bottom: 3px solid transparent;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--text-muted);
       cursor: pointer;
@@ -391,6 +393,16 @@
 
     .admin-tab-content { display: none; }
     .admin-tab-content.active { display: block; }
+
+    .inline-create-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      background: var(--mint-bg);
+      padding: 14px;
+      border: 1px solid var(--mint-border);
+      border-radius: 4px;
+    }
 
     .manage-list-item {
       display: flex;
@@ -442,40 +454,51 @@
     <!-- Navigation Menu Row -->
     <div class="header-menu-bar">
       
-      <!-- 1. All Categories Dropdown -->
+      <!-- 1. All Jewelry Dropdown (Event-Safe Toggle) -->
       <div class="menu-dropdown" id="dropdown-categories">
-        <button class="menu-btn" onclick="toggleMenu('dropdown-categories')">
-          All Categories ▾
+        <button class="menu-btn" onclick="toggleMenu('dropdown-categories', event)">
+          All Jewelry ▾
         </button>
         <div class="dropdown-box" id="menu-categories-list">
-          <!-- Dynamically updated -->
+          <a onclick="filterByCategory('All')">✦ View All Pieces</a>
+          <div class="dropdown-divider"></div>
+          <a onclick="filterByCategory('Bridal Chokers & Necklaces')">Bridal Chokers & Necklaces</a>
+          <a onclick="filterByCategory('Kundan Jhumkas & Chandbalis')">Kundan Jhumkas & Chandbalis</a>
+          <a onclick="filterByCategory('Antique Bangles & Kadas')">Antique Bangles & Kadas</a>
+          <a onclick="filterByCategory('Matha Pattis & Maang Tikkas')">Matha Pattis & Maang Tikkas</a>
+          <a onclick="filterByCategory('Hathphools & Rings')">Hathphools & Rings</a>
+          <a onclick="filterByCategory('Groom Regal Accessories')">Groom Regal Accessories</a>
         </div>
       </div>
 
       <!-- 2. Wedding Roles Dropdown -->
       <div class="menu-dropdown" id="dropdown-roles">
-        <button class="menu-btn" onclick="toggleMenu('dropdown-roles')">
+        <button class="menu-btn" onclick="toggleMenu('dropdown-roles', event)">
           Wedding Roles ▾
         </button>
-        <div class="dropdown-box">
-          <a onclick="filterByRole('Bride')">Bride (Bridal Edits)</a>
-          <a onclick="filterByRole('Groom')">Groom (Kantha & Kalgi)</a>
-          <a onclick="filterByRole('Mother of Bride')">Mother of the Bride</a>
-          <a onclick="filterByRole('Bridesmaid')">Bridesmaids</a>
-          <a onclick="filterByRole('Guest')">Wedding Guests</a>
+        <div class="dropdown-box" id="menu-roles-list">
+          <a onclick="filterByRole('All')">✦ All Event Roles</a>
+          <div class="dropdown-divider"></div>
+          <a onclick="filterByRole('Bride')">Bride</a>
+          <a onclick="filterByRole('Groom')">Groom</a>
+          <a onclick="filterByRole('Mother of Bride')">Mother of Bride</a>
+          <a onclick="filterByRole('Bridesmaid')">Bridesmaid</a>
+          <a onclick="filterByRole('Wedding Guest')">Wedding Guest</a>
         </div>
       </div>
 
       <!-- 3. Collections Dropdown -->
       <div class="menu-dropdown" id="dropdown-collections">
-        <button class="menu-btn" onclick="toggleMenu('dropdown-collections')">
+        <button class="menu-btn" onclick="toggleMenu('dropdown-collections', event)">
           Collections ▾
         </button>
-        <div class="dropdown-box">
-          <a onclick="filterByCollection('Kundan')">Kundan Meenakari</a>
-          <a onclick="filterByCollection('Polki')">Uncut Polki & Jadau</a>
-          <a onclick="filterByCollection('Temple')">Temple 22K Antique Gold</a>
-          <a onclick="filterByCollection('Diamond')">Diamond & CZ Fusion</a>
+        <div class="dropdown-box" id="menu-collections-list">
+          <a onclick="filterByCollection('All')">✦ All Collections</a>
+          <div class="dropdown-divider"></div>
+          <a onclick="filterByCollection('Kundan Meenakari')">Kundan Meenakari</a>
+          <a onclick="filterByCollection('Polki / Jadau')">Polki / Jadau</a>
+          <a onclick="filterByCollection('Temple 22K Antique Gold')">Temple 22K Antique Gold</a>
+          <a onclick="filterByCollection('Diamond & CZ Fusion')">Diamond & CZ Fusion</a>
         </div>
       </div>
 
@@ -486,34 +509,18 @@
   </header>
 
   <main class="container">
-    <!-- Filter Panel -->
     <div class="filter-panel">
       <div class="filter-group">
-        <label>Filter By Category</label>
-        <select id="filter-type" onchange="applyFilters()">
-          <!-- Synchronized -->
-        </select>
+        <label>Category</label>
+        <select id="filter-type" onchange="applyFilters()"></select>
       </div>
       <div class="filter-group">
-        <label>Finish / Collection</label>
-        <select id="filter-collection" onchange="applyFilters()">
-          <option value="All">All Finishes</option>
-          <option value="Kundan">Kundan Meenakari</option>
-          <option value="Polki">Polki / Jadau</option>
-          <option value="Temple">Temple Antique Gold</option>
-          <option value="Diamond">Diamond Fusion</option>
-        </select>
+        <label>Collection / Finish</label>
+        <select id="filter-collection" onchange="applyFilters()"></select>
       </div>
       <div class="filter-group">
-        <label>Role</label>
-        <select id="filter-role" onchange="applyFilters()">
-          <option value="All">All Roles</option>
-          <option value="Bride">Bride</option>
-          <option value="Groom">Groom</option>
-          <option value="Mother of Bride">Mother of Bride</option>
-          <option value="Bridesmaid">Bridesmaid</option>
-          <option value="Guest">Guest</option>
-        </select>
+        <label>Wedding / Event Role</label>
+        <select id="filter-role" onchange="applyFilters()"></select>
       </div>
       <div class="filter-group">
         <label>Delivery Target Date</label>
@@ -522,724 +529,10 @@
       <button class="btn-admin" onclick="resetFilters()">Reset All</button>
     </div>
 
-    <!-- Product Grid -->
-    <div class="product-grid" id="product-grid">
-      <!-- Injected by JavaScript -->
-    </div>
+    <div class="product-grid" id="product-grid"></div>
   </main>
 
   <!-- Slide-Out Shopping Cart Drawer -->
   <aside class="cart-drawer" id="cart-drawer">
     <div class="cart-header">
-      <h3 style="font-family:var(--font-serif); font-size:20px; color:var(--forest);">Your Rental Bag</h3>
-      <button class="modal-close" style="position: static;" onclick="toggleCart(false)">&times;</button>
-    </div>
-    <div class="cart-body" id="cart-items">
-      <!-- Items dynamically populated -->
-    </div>
-    <div class="cart-footer">
-      <div style="font-size: 13px; margin-bottom: 6px; display: flex; justify-content: space-between;">
-        <span>Rental Subtotal:</span>
-        <strong id="cart-subtotal" style="color:var(--forest);">$0.00</strong>
-      </div>
-      <div style="font-size: 13px; margin-bottom: 6px; display: flex; justify-content: space-between;">
-        <span>Refundable Security Deposit:</span>
-        <strong id="cart-deposit" style="color:var(--gold-dark);">$0.00</strong>
-      </div>
-      <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.4;">
-        * Deposit refunded automatically within 48h of return inspection. Free return prepaid label included.
-      </div>
-      <div style="font-size: 17px; font-weight: 700; margin-bottom: 16px; display: flex; justify-content: space-between; border-top: 1px solid var(--mint-border); padding-top: 10px;">
-        <span>Total Due Today:</span>
-        <span id="cart-grand-total" style="color: var(--forest);">$0.00</span>
-      </div>
-      <button class="btn-reserve" style="width: 100%; padding: 14px;" onclick="executeCheckout()">Proceed to Secure Checkout</button>
-    </div>
-  </aside>
-
-  <!-- Product Detail Page (PDP) Modal -->
-  <div class="modal-overlay" id="pdp-modal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('pdp-modal')">&times;</button>
-      <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px;" id="pdp-content">
-        <!-- Rendered dynamically -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Sizing Guide Modal -->
-  <div class="modal-overlay" id="measuring-modal">
-    <div class="modal-content" style="max-width: 650px;">
-      <button class="modal-close" onclick="closeModal('measuring-modal')">&times;</button>
-      <h2 style="font-family: var(--font-serif); margin-bottom: 12px; color:var(--forest);">WearPhanis Sizing & Fit Guide</h2>
-      <h4 style="margin: 16px 0 6px 0; color:var(--forest); font-size:14px;">1. Bangle Size (Indian Standards)</h4>
-      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
-        Wrap a measuring tape around the widest knuckle line of your hand:
-      </p>
-      <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 18px; border:1px solid var(--mint-border);">
-        <thead>
-          <tr style="background: var(--mint-panel); color:var(--forest); text-align: left;">
-            <th style="padding: 8px; border: 1px solid var(--mint-border);">Indian Size</th>
-            <th style="padding: 8px; border: 1px solid var(--mint-border);">Knuckle Circumference</th>
-            <th style="padding: 8px; border: 1px solid var(--mint-border);">Inner Diameter</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td style="padding: 8px; border: 1px solid var(--mint-border);">2.4 (Small)</td><td style="padding: 8px; border: 1px solid var(--mint-border);">7.0 inches</td><td style="padding: 8px; border: 1px solid var(--mint-border);">2.25 inches</td></tr>
-          <tr><td style="padding: 8px; border: 1px solid var(--mint-border);">2.6 (Medium)</td><td style="padding: 8px; border: 1px solid var(--mint-border);">7.5 inches</td><td style="padding: 8px; border: 1px solid var(--mint-border);">2.37 inches</td></tr>
-          <tr><td style="padding: 8px; border: 1px solid var(--mint-border);">2.8 (Large)</td><td style="padding: 8px; border: 1px solid var(--mint-border);">8.0 inches</td><td style="padding: 8px; border: 1px solid var(--mint-border);">2.50 inches</td></tr>
-          <tr><td style="padding: 8px; border: 1px solid var(--mint-border);">2.10 (X-Large)</td><td style="padding: 8px; border: 1px solid var(--mint-border);">8.5 inches</td><td style="padding: 8px; border: 1px solid var(--mint-border);">2.62 inches</td></tr>
-        </tbody>
-      </table>
-      <h4 style="margin: 12px 0 6px 0; color:var(--forest); font-size:14px;">2. Choker Necklines</h4>
-      <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6;">
-        All chokers include handcrafted gold zari cords (dori) that adjust seamlessly from 11 inches up to 17 inches for a custom fit.
-      </p>
-    </div>
-  </div>
-
-  <!-- How It Works Modal -->
-  <div class="modal-overlay" id="how-it-works-modal">
-    <div class="modal-content" style="max-width: 650px;">
-      <button class="modal-close" onclick="closeModal('how-it-works-modal')">&times;</button>
-      <h2 style="font-family: var(--font-serif); margin-bottom: 16px; color:var(--forest);">How WearPhanis Works</h2>
-      <ol style="padding-left: 20px; font-size: 13px; line-height: 2; color: var(--text-muted);">
-        <li><strong style="color:var(--forest);">Reserve Your Dates:</strong> Pick your 7-day period (schedule delivery 2-3 days before your main event). Add 1-week extensions as needed.</li>
-        <li><strong style="color:var(--forest);">Inspect on Arrival:</strong> Every piece arrives sanitized. In the rare event of transit damage, notify us via our portal within 12 hours.</li>
-        <li><strong style="color:var(--forest);">Flaunt with Confidence:</strong> Wear heirloom-grade jewellery for your wedding functions without the retail expense.</li>
-        <li><strong style="color:var(--forest);">Easy Prepaid Return:</strong> Pack into the provided protective case, stick the prepaid return label on the box, and drop off at UPS/USPS on Day 7.</li>
-        <li><strong style="color:var(--forest);">Deposit Release:</strong> Your 100% refundable deposit releases back to your card within 48 hours of warehouse check-in.</li>
-      </ol>
-    </div>
-  </div>
-
-  <!-- Admin Studio Modal with Tab Controls for Add & Remove Operations -->
-  <div class="modal-overlay" id="admin-modal">
-    <div class="modal-content" style="max-width: 780px;">
-      <button class="modal-close" onclick="closeModal('admin-modal')">&times;</button>
-      <h3 style="margin-bottom: 16px; font-family: var(--font-serif); font-size:24px; color:var(--forest);">WearPhanis Admin Studio</h3>
-      
-      <!-- Tab Headers -->
-      <div class="admin-tab-nav">
-        <button class="admin-tab-btn active" onclick="switchAdminTab('tab-add')">+ Add New Item</button>
-        <button class="admin-tab-btn" onclick="switchAdminTab('tab-categories')">Manage Categories</button>
-        <button class="admin-tab-btn" onclick="switchAdminTab('tab-items')">Manage Vault Items</button>
-      </div>
-
-      <!-- Tab 1: Add New Item -->
-      <div id="tab-add" class="admin-tab-content active">
-        <form id="admin-product-form" onsubmit="handleAdminSubmit(event)">
-          <div style="background: var(--mint-bg); padding: 16px; border-radius: 4px; margin-bottom: 18px; border: 1px solid var(--mint-border);">
-            <label style="font-weight: 700; font-size: 12px; margin-bottom: 8px; display: block; color:var(--forest); text-transform:uppercase;">Category Assignment</label>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <div>
-                <span style="font-size: 11px; color: var(--text-muted);">Assign Existing Category:</span>
-                <select id="admin-category-select" style="margin-top: 4px;"></select>
-              </div>
-              <div>
-                <span style="font-size: 11px; color: var(--text-muted);">Or Create New Category:</span>
-                <input type="text" id="admin-new-category" placeholder="e.g. Royal Passa, Haar" style="margin-top: 4px;">
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Jewellery Piece Title</label>
-            <input type="text" id="admin-title" required placeholder="e.g. Padmavati Uncut Polki Choker Set">
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div class="form-group">
-              <label>Collection / Finish</label>
-              <select id="admin-collection">
-                <option value="Kundan">Kundan Meenakari</option>
-                <option value="Polki">Polki / Jadau</option>
-                <option value="Temple">Temple Antique Gold</option>
-                <option value="Diamond">Diamond Fusion</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Wedding Role</label>
-              <select id="admin-role">
-                <option value="Bride">Bride</option>
-                <option value="Groom">Groom</option>
-                <option value="Mother of Bride">Mother of Bride</option>
-                <option value="Bridesmaid">Bridesmaid</option>
-                <option value="Guest">Guest</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
-            <div class="form-group">
-              <label>7-Day Base Rent ($)</label>
-              <input type="number" id="admin-rent" required value="180">
-            </div>
-            <div class="form-group">
-              <label>Weekly Ext ($)</label>
-              <input type="number" id="admin-ext" required value="50">
-            </div>
-            <div class="form-group">
-              <label>Deposit ($)</label>
-              <input type="number" id="admin-deposit" required value="180">
-            </div>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div class="form-group">
-              <label>Dimensions</label>
-              <input type="text" id="admin-dimensions" placeholder="e.g. Choker drop: 3 in">
-            </div>
-            <div class="form-group">
-              <label>Weight (Grams)</label>
-              <input type="text" id="admin-weight" placeholder="e.g. Set: 135g">
-            </div>
-          </div>
-
-          <div style="background: var(--mint-bg); border: 1px dashed var(--mint-border); padding: 16px; border-radius: 4px; margin-bottom: 18px;">
-            <label style="font-weight: 700; font-size: 11px; text-transform:uppercase; display: block; margin-bottom: 4px; color:var(--forest);">
-              Multiple Pictures (Upload from device or URL)
-            </label>
-            <input type="file" id="admin-file-input" multiple accept="image/*" onchange="handleFileSelect(event)" style="margin-bottom: 10px;">
-            <input type="text" id="admin-img-urls" placeholder="Or enter comma-separated URLs: https://..., https://..." style="margin-bottom: 6px;">
-            <div id="upload-preview-container" class="upload-preview-strip"></div>
-          </div>
-
-          <button type="submit" class="btn-reserve" style="background:var(--forest); color:#ffffff; font-weight:700;">Publish Item</button>
-        </form>
-      </div>
-
-      <!-- Tab 2: Manage Categories (Remove functionality) -->
-      <div id="tab-categories" class="admin-tab-content">
-        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
-          Removing a category immediately removes it from the top navigation and filter menus. Items that were assigned to a deleted category will be moved to <strong>"Uncategorized"</strong>.
-        </p>
-        <div id="category-manager-list">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-
-      <!-- Tab 3: Manage Vault Items (Remove functionality) -->
-      <div id="tab-items" class="admin-tab-content">
-        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
-          Removing an item permanently deletes it from the active rental vault and grid.
-        </p>
-        <div id="item-manager-list">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    let categories = [
-      "Bridal Chokers & Necklaces",
-      "Kundan Jhumkas & Chandbalis",
-      "Antique Bangles & Kadas",
-      "Matha Pattis & Maang Tikkas",
-      "Hathphools & Rings",
-      "Groom Regal Accessories"
-    ];
-
-    let products = [
-      {
-        id: "wp-01",
-        title: "Noor Meenakari Kundan Bridal Choker Set",
-        category: "Bridal Chokers & Necklaces",
-        collection: "Kundan",
-        role: "Bride",
-        rentPrice: 195,
-        extPrice: 55,
-        deposit: 195,
-        dimensions: "Choker Drop: 3.2 in. Adjustable Zari Dori fits all necks.",
-        weight: "Choker: 125g, Earrings: 18g each (Event Grade)",
-        images: [
-          "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1611591475155-42646261057b?w=800&auto=format&fit=crop&q=80"
-        ]
-      },
-      {
-        id: "wp-02",
-        title: "Amritsari Uncut Polki Matha Patti",
-        category: "Matha Pattis & Maang Tikkas",
-        collection: "Polki",
-        role: "Bride",
-        rentPrice: 95,
-        extPrice: 30,
-        deposit: 100,
-        dimensions: "Central Tikka: 2.2 in; Perimeter Band: 11.5 in",
-        weight: "48g (Ultra-lightweight forehead band)",
-        images: [
-          "https://images.unsplash.com/photo-1611591475155-42646261057b?w=800&auto=format&fit=crop&q=80"
-        ]
-      },
-      {
-        id: "wp-03",
-        title: "Devi Temple 22K Antique Kadas (Set of 2)",
-        category: "Antique Bangles & Kadas",
-        collection: "Temple",
-        role: "Bride",
-        rentPrice: 90,
-        extPrice: 28,
-        deposit: 95,
-        dimensions: "Size 2.6 (Inner Diameter: 2.37 in)",
-        weight: "74g per pair with handcrafted screw lock",
-        images: [
-          "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop&q=80"
-        ]
-      }
-    ];
-
-    let cart = [];
-    let pendingUploadedImages = [];
-
-    function toggleMenu(id) {
-      const target = document.getElementById(id);
-      const isCurrentlyActive = target.classList.contains('active');
-      document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
-      if (!isCurrentlyActive) {
-        target.classList.add('active');
-      }
-    }
-
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.menu-dropdown')) {
-        document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
-      }
-    });
-
-    function syncCategoryElements() {
-      const menuList = document.getElementById('menu-categories-list');
-      if (menuList) {
-        menuList.innerHTML = `<a onclick="filterByCategory('All')">✦ View All Pieces</a><div class="dropdown-divider"></div>` +
-          categories.map(c => `<a onclick="filterByCategory('${c}')">${c}</a>`).join('');
-      }
-
-      const filterSelect = document.getElementById('filter-type');
-      if (filterSelect) {
-        filterSelect.innerHTML = `<option value="All">All Categories (${categories.length})</option>` +
-          categories.map(c => `<option value="${c}">${c}</option>`).join('');
-      }
-
-      const adminSelect = document.getElementById('admin-category-select');
-      if (adminSelect) {
-        adminSelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
-      }
-
-      renderCategoryManagerList();
-    }
-
-    function renderCategoryManagerList() {
-      const container = document.getElementById('category-manager-list');
-      if (!container) return;
-
-      if (categories.length === 0) {
-        container.innerHTML = `<p style="font-size:12px; color:var(--text-muted);">No custom categories present.</p>`;
-        return;
-      }
-
-      container.innerHTML = categories.map((cat, idx) => `
-        <div class="manage-list-item">
-          <div>
-            <strong style="font-size:13px; color:var(--forest);">${cat}</strong>
-            <span style="font-size:11px; color:var(--text-muted); display:block;">
-              ${products.filter(p => p.category === cat).length} items currently assigned
-            </span>
-          </div>
-          <button class="btn-delete" onclick="deleteCategory(${idx})">Remove Category</button>
-        </div>
-      `).join('');
-    }
-
-    function renderItemManagerList() {
-      const container = document.getElementById('item-manager-list');
-      if (!container) return;
-
-      if (products.length === 0) {
-        container.innerHTML = `<p style="font-size:12px; color:var(--text-muted);">Vault is empty.</p>`;
-        return;
-      }
-
-      container.innerHTML = products.map((item, idx) => `
-        <div class="manage-list-item">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <img src="${item.images[0]}" style="width:45px; height:45px; object-fit:cover; border-radius:3px; border:1px solid var(--mint-border);">
-            <div>
-              <strong style="font-size:13px; color:var(--forest);">${item.title}</strong>
-              <span style="font-size:11px; color:var(--text-muted); display:block;">
-                ${item.category} • $${item.rentPrice}/week
-              </span>
-            </div>
-          </div>
-          <button class="btn-delete" onclick="deleteItem('${item.id}')">Delete Item</button>
-        </div>
-      `).join('');
-    }
-
-    function deleteCategory(index) {
-      const categoryToRemove = categories[index];
-      if (confirm(`Are you sure you want to delete "${categoryToRemove}"? Any items under this category will be changed to "Uncategorized".`)) {
-        // Reassign affected items
-        products.forEach(p => {
-          if (p.category === categoryToRemove) {
-            p.category = "Uncategorized";
-          }
-        });
-        // Remove category
-        categories.splice(index, 1);
-        if (!categories.includes("Uncategorized") && products.some(p => p.category === "Uncategorized")) {
-          categories.push("Uncategorized");
-        }
-        syncCategoryElements();
-        renderCatalog();
-        renderItemManagerList();
-      }
-    }
-
-    function deleteItem(productId) {
-      const item = products.find(p => p.id === productId);
-      if (!item) return;
-
-      if (confirm(`Are you sure you want to permanently delete "${item.title}" from the inventory?`)) {
-        products = products.filter(p => p.id !== productId);
-        renderCatalog();
-        renderItemManagerList();
-        syncCategoryElements();
-      }
-    }
-
-    function switchAdminTab(tabId) {
-      document.querySelectorAll('.admin-tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.admin-tab-content').forEach(content => content.classList.remove('active'));
-      
-      event.target.classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-
-      if (tabId === 'tab-categories') renderCategoryManagerList();
-      if (tabId === 'tab-items') renderItemManagerList();
-    }
-
-    function openAdminModal() {
-      renderCategoryManagerList();
-      renderItemManagerList();
-      openModal('admin-modal');
-    }
-
-    function renderCatalog(items = products) {
-      const grid = document.getElementById('product-grid');
-      if (!grid) return;
-
-      if (items.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-muted);">No jewellery items found matching this selection.</div>`;
-        return;
-      }
-
-      grid.innerHTML = items.map(p => `
-        <div class="product-card">
-          <div class="img-wrap">
-            <img src="${p.images[0]}" alt="${p.title}" class="product-img">
-            <span class="photo-badge">📷 ${p.images.length} photos</span>
-          </div>
-          <div class="product-info">
-            <div>
-              <span class="badge">${p.category}</span>
-              <h3 class="product-title">${p.title}</h3>
-              <div class="price-details">
-                <strong>$${p.rentPrice}.00</strong> / 7-Day Rental
-                <span class="deposit-tag">+$${p.deposit}.00 refundable security deposit</span>
-              </div>
-            </div>
-            <button class="btn-reserve" onclick="openPDP('${p.id}')">Select Dates & Reserve</button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function openPDP(id) {
-      const product = products.find(p => p.id === id);
-      if (!product) return;
-      const container = document.getElementById('pdp-content');
-      
-      const d = new Date();
-      d.setDate(d.getDate() + 3);
-      const minDate = d.toISOString().split('T')[0];
-
-      container.innerHTML = `
-        <div class="gallery-wrap">
-          <img id="main-pdp-view" src="${product.images[0]}" class="main-gallery-img">
-          <div class="thumb-strip">
-            ${product.images.map((img, i) => `
-              <img src="${img}" class="thumb-item ${i === 0 ? 'active' : ''}" onclick="swapGalleryImage(this, '${img}')">
-            `).join('')}
-          </div>
-          <div style="margin-top:10px; font-size:12px; line-height:1.7; background:var(--mint-bg); border:1px solid var(--mint-border); padding:14px; border-radius:4px;">
-            <strong style="color:var(--forest); display:block; margin-bottom:4px;">Vault Specifications:</strong>
-            <p>• Category: ${product.category}</p>
-            <p>• Dimensions: ${product.dimensions || 'Custom Sizing'}</p>
-            <p>• Weight: ${product.weight || 'Standard Weight'}</p>
-            <p>• Sanitization: Posts sterilized in alcohol; microfiber buffed Kundan foil.</p>
-          </div>
-        </div>
-
-        <div>
-          <span class="badge">${product.collection}</span>
-          <span class="badge" style="background:#fff; border-color:#ccc;">${product.role}</span>
-          <h2 style="font-family:var(--font-serif); font-size:26px; color:var(--forest); margin-bottom:8px;">${product.title}</h2>
-          
-          <div style="background:var(--mint-bg); border:1px solid var(--mint-border); padding:14px; border-radius:4px; margin-bottom:18px; font-size:13px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span>7-Day Base Rental:</span>
-              <strong style="color:var(--gold-dark);">$${product.rentPrice}.00</strong>
-            </div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span>Weekly Extension:</span>
-              <span>+$${product.extPrice}.00 / week</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; color:var(--text-muted);">
-              <span>100% Refundable Deposit:</span>
-              <span>$${product.deposit}.00</span>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>1. Delivery Target Date (Select 2-3 days prior to event):</label>
-            <input type="date" id="pdp-date" min="${minDate}" value="${minDate}">
-          </div>
-
-          <div class="form-group">
-            <label>2. Rental Period Duration:</label>
-            <select id="pdp-duration" onchange="calculatePDPTotal(${product.rentPrice}, ${product.extPrice}, ${product.deposit})">
-              <option value="1">7 Days (Standard Base)</option>
-              <option value="2">+1 Week Extension (14 Days total)</option>
-              <option value="3">+2 Weeks Extension (21 Days total)</option>
-            </select>
-          </div>
-
-          <div style="border-top:1px dashed var(--mint-border); padding-top:14px; margin-bottom:18px;">
-            <div style="display:flex; justify-content:space-between; font-size:16px; font-weight:700;">
-              <span>Due Today at Checkout:</span>
-              <span id="pdp-total" style="color:var(--gold-dark); font-size:20px;">$${product.rentPrice + product.deposit}.00</span>
-            </div>
-            <small style="color:var(--text-muted);">(Rental Fee + $${product.deposit}.00 Refundable Deposit released 48h after return scan)</small>
-          </div>
-
-          <button class="btn-reserve" style="width:100%; padding:14px;" onclick="addToBag('${product.id}')">Add to Rental Bag</button>
-        </div>
-      `;
-      openModal('pdp-modal');
-    }
-
-    function swapGalleryImage(thumbElement, fullSrc) {
-      document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('active'));
-      thumbElement.classList.add('active');
-      document.getElementById('main-pdp-view').src = fullSrc;
-    }
-
-    function calculatePDPTotal(baseRent, extFee, deposit) {
-      const weeks = parseInt(document.getElementById('pdp-duration').value);
-      const extraWeeks = weeks - 1;
-      const grandTotal = baseRent + (extraWeeks * extFee) + deposit;
-      document.getElementById('pdp-total').innerText = `$${grandTotal}.00`;
-    }
-
-    function handleFileSelect(e) {
-      const files = Array.from(e.target.files);
-      const preview = document.getElementById('upload-preview-container');
-      
-      files.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          pendingUploadedImages.push(event.target.result);
-          const img = document.createElement('img');
-          img.src = event.target.result;
-          img.className = 'upload-preview-thumb';
-          preview.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
-    function handleAdminSubmit(e) {
-      e.preventDefault();
-
-      const customCategory = document.getElementById('admin-new-category').value.trim();
-      let selectedCategory = document.getElementById('admin-category-select').value;
-
-      if (customCategory.length > 0) {
-        if (!categories.includes(customCategory)) {
-          categories.push(customCategory);
-          syncCategoryElements();
-        }
-        selectedCategory = customCategory;
-      }
-
-      const urlInput = document.getElementById('admin-img-urls').value.trim();
-      let imageUrls = [...pendingUploadedImages];
-      
-      if (urlInput.length > 0) {
-        const parsedUrls = urlInput.split(',').map(u => u.trim()).filter(u => u.length > 0);
-        imageUrls = imageUrls.concat(parsedUrls);
-      }
-
-      if (imageUrls.length === 0) {
-        imageUrls.push("https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80");
-      }
-
-      const newItem = {
-        id: "wp-" + (products.length + 1) + "-" + Date.now(),
-        title: document.getElementById('admin-title').value.trim(),
-        category: selectedCategory,
-        collection: document.getElementById('admin-collection').value,
-        role: document.getElementById('admin-role').value,
-        rentPrice: parseFloat(document.getElementById('admin-rent').value) || 150,
-        extPrice: parseFloat(document.getElementById('admin-ext').value) || 45,
-        deposit: parseFloat(document.getElementById('admin-deposit').value) || 150,
-        dimensions: document.getElementById('admin-dimensions').value.trim() || "Custom Sizing",
-        weight: document.getElementById('admin-weight').value.trim() || "Standard Weight",
-        images: imageUrls
-      };
-
-      products.unshift(newItem);
-      renderCatalog();
-      renderItemManagerList();
-      closeModal('admin-modal');
-
-      e.target.reset();
-      pendingUploadedImages = [];
-      document.getElementById('upload-preview-container').innerHTML = '';
-      
-      alert(`Success! "${newItem.title}" published under "${selectedCategory}".`);
-    }
-
-    function applyFilters() {
-      const type = document.getElementById('filter-type').value;
-      const coll = document.getElementById('filter-collection').value;
-      const role = document.getElementById('filter-role').value;
-
-      const filtered = products.filter(p => {
-        return (type === 'All' || p.category === type) &&
-               (coll === 'All' || p.collection === coll) &&
-               (role === 'All' || p.role === role);
-      });
-      renderCatalog(filtered);
-    }
-
-    function filterByCategory(cat) {
-      document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
-      const select = document.getElementById('filter-type');
-      if (select) select.value = cat;
-
-      if (cat === 'All') {
-        renderCatalog();
-      } else {
-        renderCatalog(products.filter(p => p.category === cat));
-      }
-    }
-
-    function filterByRole(role) {
-      document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
-      const select = document.getElementById('filter-role');
-      if (select) select.value = role;
-      renderCatalog(products.filter(p => p.role === role));
-    }
-
-    function filterByCollection(coll) {
-      document.querySelectorAll('.menu-dropdown').forEach(el => el.classList.remove('active'));
-      const select = document.getElementById('filter-collection');
-      if (select) select.value = coll;
-      renderCatalog(products.filter(p => p.collection === coll));
-    }
-
-    function filterClearance() {
-      renderCatalog(products.filter(p => p.isClearance));
-    }
-
-    function resetFilters() {
-      if (document.getElementById('filter-type')) document.getElementById('filter-type').value = 'All';
-      if (document.getElementById('filter-collection')) document.getElementById('filter-collection').value = 'All';
-      if (document.getElementById('filter-role')) document.getElementById('filter-role').value = 'All';
-      renderCatalog();
-    }
-
-    function addToBag(productId) {
-      const product = products.find(p => p.id === productId);
-      const date = document.getElementById('pdp-date').value;
-      const weeks = parseInt(document.getElementById('pdp-duration').value);
-      const extraWeeks = weeks - 1;
-      const rentalFee = product.rentPrice + (extraWeeks * product.extPrice);
-
-      cart.push({
-        ...product,
-        rentalFee,
-        durationDays: weeks * 7,
-        targetDate: date
-      });
-
-      closeModal('pdp-modal');
-      updateCartUI();
-      toggleCart(true);
-    }
-
-    function updateCartUI() {
-      document.getElementById('cart-count').innerText = cart.length;
-      const itemsContainer = document.getElementById('cart-items');
-      
-      if (cart.length === 0) {
-        itemsContainer.innerHTML = '<p style="color:var(--text-muted); font-size:13px; text-align:center; margin-top:50px;">Your rental bag is empty.</p>';
-        document.getElementById('cart-subtotal').innerText = '$0.00';
-        document.getElementById('cart-deposit').innerText = '$0.00';
-        document.getElementById('cart-grand-total').innerText = '$0.00';
-        return;
-      }
-
-      let rentSum = 0;
-      let depositSum = 0;
-
-      itemsContainer.innerHTML = cart.map((item, idx) => {
-        rentSum += item.rentalFee;
-        depositSum += item.deposit;
-        return `
-          <div style="border-bottom:1px solid var(--mint-border); padding-bottom:14px; margin-bottom:14px;">
-            <div style="display:flex; justify-content:space-between; font-weight:700; font-size:14px; color:var(--forest);">
-              <span>${item.title}</span>
-              <button onclick="removeFromCart(${idx})" style="border:none;background:none;color:#888;font-size:18px;cursor:pointer;">&times;</button>
-            </div>
-            <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Delivery: ${item.targetDate} (${item.durationDays} Days)</div>
-            <div style="font-size:12px; color:var(--gold-dark); margin-top:2px;">Rental: $${item.rentalFee}.00 | Deposit: $${item.deposit}.00</div>
-          </div>
-        `;
-      }).join('');
-
-      document.getElementById('cart-subtotal').innerText = `$${rentSum.toFixed(2)}`;
-      document.getElementById('cart-deposit').innerText = `$${depositSum.toFixed(2)}`;
-      document.getElementById('cart-grand-total').innerText = `$${(rentSum + depositSum).toFixed(2)}`;
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCartUI();
-    }
-
-    function toggleCart(isOpen) {
-      const drawer = document.getElementById('cart-drawer');
-      isOpen ? drawer.classList.add('open') : drawer.classList.remove('open');
-    }
-
-    function executeCheckout() {
-      if (cart.length === 0) return alert('Your bag is empty.');
-      alert('Order Placed with WearPhanis:\n- Free Outbound Ground Shipping Selected\n- Prepaid return shipping label generated for USPS/UPS\n- 100% Security deposit releases within 48h of return delivery.');
-      cart = [];
-      updateCartUI();
-      toggleCart(false);
-    }
-
-    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-    // Init Execution
-    syncCategoryElements();
-    renderCatalog();
-  </script>
-</body>
-</html>
+      <h3 style="font-family:var(--font-serif); font-size:
