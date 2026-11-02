@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WearPhanis | Luxury Indian Jewellery Rental USA</title>
+  <style>
+    :root {
+      --mint-bg: #edf4ee;
+      --mint-panel: #dbe8dd;
+      --mint-border: #bfd4c3;
+      --forest: #14281d;
+      --forest-light: #234231;
+      --gold: #b38838;
+      --gold-dark: #8c6721;
+      --card-white: #ffffff;
+      --text-muted: #556b5e;
+      --font-serif: Georgia, 'Times New Roman', serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--forest);
+      background-color: var(--mint-bg);
+      background-image: 
+        radial-gradient(circle at 10% 10%, #e2eee4 0%, transparent 40%),
+        radial-gradient(circle at 90% 40%, #e4ede6 0%, transparent 45%),
+        linear-gradient(135deg, #edf4ee 0%, #e1ece3 50%, #edf4ee 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* Top Announcement */
+    .top-strip {
+      background: var(--forest);
+      color: #e5ede7;
+      font-size: 11px;
+      text-align: center;
+      padding: 8px 16px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Solid Two-Tier Sticky Header */
+    header {
+      background: #ffffff;
+      border-bottom: 2px solid var(--mint-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(20, 40, 29, 0.05);
+    }
+
+    /* Tier 1: Brand & Key Utility */
+    .header-main {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--mint-border);
+    }
+
+    .brand-logo {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--forest);
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .brand-logo span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-admin {
+      background: var(--mint-panel);
+      border: 1px solid var(--mint-border);
+      color: var(--forest);
+      padding: 9px 15px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .btn-admin:hover { background: var(--mint-border); }
+
+    .btn-cart {
+      background: var(--forest);
+      color: #ffffff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    /* Tier 2: Dedicated Menu Bar - Always 100% Visible */
+    .header-menu-bar {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    /* Native HTML Details Dropdown (Zero JS dependency to display) */
+    details.menu-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    summary.menu-link, button.menu-link {
+      list-style: none;
+      background: transparent;
+      border: none;
+      color: var(--forest);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 14px 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 2px solid transparent;
+      user-select: none;
+      font-family: var(--font-sans);
+    }
+    summary.menu-link::-webkit-details-marker { display: none; }
+    summary.menu-link:hover, button.menu-link:hover, details[open] > summary.menu-link {
+      color: var(--gold-dark);
+      border-bottom-color: var(--gold-dark);
+      background: var(--mint-bg);
+    }
+
+    .dropdown-box {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      border: 1px solid var(--mint-border);
+      border-radius: 4px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      min-width: 260px;
+      padding: 8px 0;
+      z-index: 2000;
+    }
+
+    .dropdown-box a {
+      display: block;
+      padding: 10px 18px;
+      color: var(--forest);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .dropdown-box a:hover {
+      background: var(--mint-panel);
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+    .dropdown-divider {
+      height: 1px;
+      background: var(--mint-border);
+      margin: 6px 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1360px;
+      margin: 28px auto 16px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+      display: block;
+      font-weight: 700;
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--forest);
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 20px;
+      border-top: 1px solid var(--mint-border);
+      padding-top: 18px;
+    }
+    .hero-badge-item strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--forest);
+    }
+    .hero-badge-item span {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--mint-border);
+      box-shadow: 0 14px 30px rgba(20, 40, 29, 0.08);
+    }
+
+    /* Container & Filter Bar */
+    .container { max-width: 1360px; margin: 0 auto; padding: 10px 24px 60px; }
+
+    .filter-panel {
+      background: #ffffff;
+      border: 1px solid var(--mint-border);
+      border-radius: 6px;
+      padding: 18px 24px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-end;
+      box-shadow: 0 4px 15px rgba(20, 40, 29, 0.03);
+    }
+    .filter-group { display: flex; flex-direction: column; gap: 4px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--forest); font-weight: 700; }
+    .filter-group select, .filter-group input {
+      padding: 8px 12px;
+      border: 1px solid var(--mint-border);
+      border-radius: 3px;
+      font-size: 12px;
+      background: var(--mint-bg);
+      color: var(--forest);
+      min-width: 160px;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .product-card {
+      background: #ffffff;
+      border: 1px solid var(--mint-border);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 14px rgba(20, 40, 29, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(20, 40, 29, 0.1);
+    }
+    .img-wrap { position: relative; width: 100%; height: 320px; background: #e3ede5; }
+    .product-img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(20, 40, 29, 0.85);
+      color: #ffffff;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+    .product-info { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      background: var(--mint-panel);
+      border: 1px solid var(--mint-border);
+      color: var(--forest);
+      padding: 3px 7px;
+      border-radius: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .product-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      color: var(--forest);
+      margin-bottom: 8px;
+    }
+    .price-details { font-size: 13px; margin-bottom: 16px; color: var(--text-muted); }
+    .price-details strong { font-size: 19px; color: var(--gold-dark); font-family: var(--font-serif); }
+    .deposit-tag { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; }
+
+    .btn-reserve {
+      width: 100%;
+      background: var(--forest);
+      border: 1px solid var(--forest);
+      color: #ffffff;
+      padding: 12px;
+      font-weight: 700;
+      border-radius: 3px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      transition: all 0.2s;
+    }
+    .btn-reserve:hover {
+      background: var(--gold-dark);
+      border-color: var(--gold-dark);
+    }
+
+    /* Modals & Cart Drawer */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 40, 29, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #ffffff;
+      border: 1px solid var(--mint-border);
+      width: 100%;
+      max-width: 920px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 6px;
+      padding: 32px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      right: 20px;
+      top: 16px;
+      font-size: 26px;
+      border: none;
+      background: transparent;
+      color: var(--forest);
+      cursor: pointer;
+    }
+
+    .gallery-wrap { display: flex; flex-direction: column; gap: 12px; }
+    .main-gallery-img { width: 100%; height: 380px; object-fit: cover; border-radius: 4px; border: 1px solid var(--mint-border); }
+    .thumb-strip { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
+    .thumb-item { width: 70px; height: 70px; object-fit: cover; border-radius: 3px; border: 2px solid transparent; cursor: pointer; opacity: 0.65; }
+    .thumb-item.active, .thumb-item:hover { border-color: var(--gold-dark); opacity: 1; }
+
+    .cart-drawer {
+      position: fixed;
+      right: -440px;
+      top: 0;
+      width: 420px;
+      height: 100%;
+      background: #ffffff;
+      border-left: 1px solid var(--mint-border);
+      box-shadow: -10px 0 35px rgba(20, 40, 29, 0.15);
+      z-index: 3001;
+      transition: right 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-drawer.open { right: 0; }
+    .cart-header { padding: 22px; border-bottom: 1px solid var(--mint-border); display: flex; justify-content: space-between; align-items: center; background: var(--mint-bg); }
+    .cart-body { padding: 22px; flex: 1; overflow-y: auto; }
+    .cart-footer { padding: 22px; border-top: 1px solid var(--mint-border); background: var(--mint-bg); }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 11px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; color: var(--forest); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--mint-border);
+      border-radius: 3px;
+      font-size: 13px;
+      background: #ffffff;
+      color: var(--forest);
+    }
+    .upload-preview-strip { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .upload-preview-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 3px; border: 1px solid var(--forest); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <div class="top-strip">
+    WearPhanis • Complimentary Nationwide Ground Shipping • 100% Refundable Security Deposit • 7-Day Curated Rentals
+  </div>
+
+  <!-- Bulletproof Two-Tier Header -->
+  <header>
+    <!-- Tier 1: Logo & Utility Buttons -->
+    <div class="header-main">
+      <a href="#" class="brand-logo" onclick="resetFilters()">
+        WearPhanis
+        <span>Luxury Indian Jewellery Vault</span>
+      </a>
+      <div class="header-actions">
+        <button class="btn-admin" onclick="openModal('admin-modal')">+ Add Item / Category</button>
+        <button class="btn-cart" onclick="toggleCart(true)">Rental Bag (<span id="cart-count">0</span>)</button>
+      </div>
+    </div>
+
+    <!-- Tier 2: Dedicated Navigation Row (Visible on All Devices) -->
+    <div class="header-menu-bar">
+      
+      <!-- 1. Native Categories Dropdown List -->
+      <details class="menu-dropdown">
+        <summary class="menu-link">All Jewellery ▾</summary>
+        <div class="dropdown-box" id="menu-categories-list">
+          <a onclick="filterByCategory('All')">✦ View All Pieces</a>
+          <div class="dropdown-divider"></div>
+          <a onclick="filterByCategory('Bridal Chokers & Necklaces')">Bridal Chokers & Necklaces</a>
+          <a onclick="filterByCategory('Kundan Jhumkas & Chandbalis')">Kundan Jhumkas & Chandbalis</a>
+          <a onclick="filterByCategory('Antique Bangles & Kadas')">Antique Bangles & Kadas</a>
+          <a onclick="filterByCategory('Matha Pattis & Maang Tikkas')">Matha Pattis & Maang Tikkas</a>
+          <a onclick="filterByCategory('Hathphools & Rings')">Hathphools & Rings</a>
+          <a onclick="filterByCategory('Groom Regal Accessories')">Groom Regal Accessories</a>
+        </div>
+      </details>
+
+      <!-- 2. Native Wedding Roles Dropdown -->
+      <details class="menu-dropdown">
+        <summary class="menu-link">Wedding Roles ▾</summary>
+        <div class="dropdown-box">
+          <a onclick="filterByRole('Bride')">Bride (Bridal Edits)</a>
+          <a onclick="filterByRole('Groom')">Groom (Kantha & Kalgi)</a>
+          <a onclick="filterByRole('Mother of Bride')">Mother of the Bride</a>
+          <a onclick="filterByRole('Bridesmaid')">Bridesmaids</a>
+          <a onclick="filterByRole('Guest')">Wedding Guests</a>
+        </div>
+      </details>
+
+      <!-- 3. Native Collections Dropdown -->
+      <details class="menu-dropdown">
+        <summary class="menu-link">Collections ▾</summary>
+        <div class="dropdown-box">
+          <a onclick="filterByCollection('Kundan')">Kundan Meenakari</a>
+          <a onclick="filterByCollection('Polki')">Uncut Polki & Jadau</a>
+          <a onclick="filterByCollection('Temple')">Temple 22K Antique Gold</a>
+          <a onclick="filterByCollection('Diamond')">Diamond & CZ Fusion</a>
+        </div>
+      </details>
+
+      <button class="menu-link" onclick="filterClearance()">Archive Sale</button>
+      <button class="menu-link" onclick="openModal('measuring-modal')">Size Guide</button>
+      <button class="menu-link" onclick="openModal('how-it-works-modal')">How It Works</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <span class="hero-eyebrow">Couture Indian Jewellery Rentals</span>
+      <h1>Adorn the Heritage of Kundan & Polki.</h1>
+      <p>
+        WearPhanis delivers museum-grade Indian jewellery nationwide.
+        Select your 7-day rental period, wear sanitized heirloom sets for your wedding functions, 
+        and return with our prepaid courier label.
+      </p>
+      <div class="hero-badges">
+        <div class="hero-badge-item">
+          <strong>7-Day Rentals</strong>
+          <span>Weekly extension increments</span>
+        </div>
+        <div class="hero-badge-item">
+          <strong>100% Refundable</strong>
+          <span>Deposit returned in 48h</span>
+        </div>
+        <div class="hero-badge-item">
+          <strong>In-House Sanitized</strong>
+          <span>Medical alcohol post care</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1000&auto=format&fit=crop&q=80" alt="WearPhanis Kundan Set" class="hero-img">
+    </div>
+  </section>
+
+  <!-- Main View -->
+  <main class="container">
+    
+    <!-- Filter Panel -->
+    <div class="filter-panel">
+      <div class="filter-group">
+        <label>Category</label>
+        <select id="filter-type" onchange="applyFilters()">
+          <!-- Injected dynamically -->
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Finish / Collection</label>
+        <select id="filter-collection" onchange="applyFilters()">
+          <option value="All">All Finishes</option>
+          <option value="Kundan">Kundan Meenakari</option>
+          <option value="Polki">Polki / Jadau</option>
+          <option value="Temple">Temple Antique Gold</option>
+          <option value="Diamond">Diamond Fusion</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Wedding Role</label>
+        <select id="filter-role" onchange="applyFilters()">
+          <option value="All">All Roles</option>
+          <option value="Bride">Bride</option>
+          <option value="Groom">Groom</option>
+          <option value="Mother of Bride">Mother of Bride</option>
+          <option value="Bridesmaid">Bridesmaid</option>
+          <option value="Guest">Guest</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Delivery Target Date</label>
+        <input type="date" id="filter-date" onchange="applyFilters()">
+      </div>
+      <button class="btn-admin" onclick="resetFilters()">Reset All</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid" id="product-grid">
+      <!-- Injected by JavaScript -->
+    </div>
+  </main>
+
+  <!-- Slide-Out Shopping Cart Drawer -->
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3 style="font-family:var(--font-serif); font-size:20px; color:var(--forest);">Your Rental Bag</h3>
+      <button class="modal-close" style="position: static;" onclick="toggleCart(false)">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-items">
+      <!-- Injected dynamically -->
+    </div>
+    <div class="cart-footer">
+      <div style="font-size: 13px; margin-bottom: 6px; display: flex; justify-content: space-between;">
+        <span>Rental Subtotal:</span>
+        <strong id="cart-subtotal" style="color:var(--forest);">$0.00</strong>
+      </div>
+      <div style="font-size: 13px; margin-bottom: 6px; display: flex; justify-content: space-between;">
+        <span>Refundable Security Deposit:</span>
+        <strong id="cart-deposit" style="color:var(--gold-dark);">$0.00</strong>
+      </div>
+      <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.4;">
+        * Deposit refunded automatically within 48h of return inspection. Free return prepaid label included.
+      </div>
+      <div style="font-size: 17px; font-weight: 700; margin-bottom: 16px; display: flex; justify-content: space-between; border-top: 1px solid var(--mint-border); padding-top: 10px;">
+        <span>Total Due Today:</span>
+        <span id="cart-grand-total" style="color: var(--forest);">$0.00</span>
+      </div>
+      <button class="btn-reserve" style="width: 100%; padding: 14px;" onclick="executeCheckout()">Proceed to Secure Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Product Detail Page (PDP) Modal -->
+  <div class="modal-overlay" id="pdp-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('pdp-modal')">&times;</button>
+      <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px;" id="pdp-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Sizing Guide Modal -->
+  <div class="modal-overlay" id="measuring-modal">
+    <div class="modal-content" style="max-width: 650px;">
+      <button class="modal-close" onclick="closeModal('measuring-modal')">&times;</button>
+      <h2 style="font-family: var(--font-serif); margin-bottom: 12px; color:var(--forest);">WearPhanis Sizing & Fit Guide</h2>
+      <h4 style="margin: 16px 0 6px 0; color:var(--forest); font-size:14px;">1. Bangle Size (Indian Standards)</h4>
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+        Wrap a measuring tape around the widest knuckle line of your hand:
+      </p>
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 18px; border:1px solid var(--mint-border);">
+        <thead>
+          <tr style="background: var(--mint-panel); color:var(--forest); text-align: left;">
+            <th style="padding: 8px; border: 1px solid var(--mint-border);">Indian Size</th>
+            <th style="padding: 8px; border: 1px solid var(--mint-border);">Knuckle Circumference</th>
+            <th style="padding: 8px; border: 1px solid var(--mint-border);">Inner Diameter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding: 8px; border: 1px solid var(--mint-border);">2.4 (Small)</td><td style="padding: 8px; border: 1px solid var(--mint-border);">7.0 inches</td><td style="padding: 8px; border: 1px solid var(--mint-border);">2.25 inches</td></tr>
+          <tr><td style="padding: 8px; border: 1px solid var(--mint-border);">2.6 (Medium)</td><td style="padding: 8px; border: 1px solid var(--mint-border);">7.5 inches</td><td style="padding: 8px; border: 1px solid var(--mint-border);">2.37 inches</td></tr>
+          <tr><td style="padding: 8px; border: 1px solid var(--mint-border);">2.8 (Large)</td><td style="padding: 8px; border: 1px solid var(--mint-border);">8.0 inches</td><td style="padding: 8px; border: 1px solid var(--mint-border);">2.50 inches</td></tr>
+          <tr><td style="padding: 8px; border: 1px solid var(--mint-border);">2.10 (X-Large)</td><td style="padding: 8px; border: 1px solid var(--mint-border);">8.5 inches</td><td style="padding: 8px; border: 1px solid var(--mint-border);">2.62 inches</td></tr>
+        </tbody>
+      </table>
+      <h4 style="margin: 12px 0 6px 0; color:var(--forest); font-size:14px;">2. Choker Necklines</h4>
+      <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6;">
+        All chokers include handcrafted gold zari cords (dori) that adjust seamlessly from 11 inches up to 17 inches for a custom fit.
+      </p>
+    </div>
+  </div>
+
+  <!-- How It Works Modal -->
+  <div class="modal-overlay" id="how-it-works-modal">
+    <div class="modal-content" style="max-width: 650px;">
+      <button class="modal-close" onclick="closeModal('how-it-works-modal')">&times;</button>
+      <h2 style="font-family: var(--font-serif); margin-bottom: 16px; color:var(--forest);">How WearPhanis Works</h2>
+      <ol style="padding-left: 20px; font-size: 13px; line-height: 2; color: var(--text-muted);">
+        <li><strong style="color:var(--forest);">Reserve Your Dates:</strong> Pick your 7-day period (schedule delivery 2-3 days before your main event). Add 1-week extensions as needed.</li>
+        <li><strong style="color:var(--forest);">Inspect on Arrival:</strong> Every piece arrives sanitized. In the rare event of transit damage, notify us via our portal within 12 hours.</li>
+        <li><strong style="color:var(--forest);">Flaunt with Confidence:</strong> Wear heirloom-grade jewellery for your wedding functions without the retail expense.</li>
+        <li><strong style="color:var(--forest);">Easy Prepaid Return:</strong> Pack into the provided protective case, stick the prepaid return label on the box, and drop off at UPS/USPS on Day 7.</li>
+        <li><strong style="color:var(--forest);">Deposit Release:</strong> Your 100% refundable deposit releases back to your card within 48 hours of warehouse check-in.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Admin Modal -->
+  <div class="modal-overlay" id="admin-modal">
+    <div class="modal-content" style="max-width: 700px;">
+      <button class="modal-close" onclick="closeModal('admin-modal')">&times;</button>
+      <h3 style="margin-bottom: 16px; font-family: var(--font-serif); font-size:24px; color:var(--forest);">WearPhanis Admin Studio</h3>
+      
+      <form id="admin-product-form" onsubmit="handleAdminSubmit(event)">
+        <div style="background: var(--mint-bg); padding: 16px; border-radius: 4px; margin-bottom: 18px; border: 1px solid var(--mint-border);">
+          <label style="font-weight: 700; font-size: 12px; margin-bottom: 8px; display: block; color:var(--forest); text-transform:uppercase;">Category Management</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <span style="font-size: 11px; color: var(--text-muted);">Existing Category:</span>
+              <select id="admin-category-select" style="margin-top: 4px;"></select>
+            </div>
+            <div>
+              <span style="font-size: 11px; color: var(--text-muted);">Or Add New Category to Menu:</span>
+              <input type="text" id="admin-new-category" placeholder="e.g. Royal Passa, Haar" style="margin-top: 4px;">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Jewellery Piece Title</label>
+          <input type="text" id="admin-title" required placeholder="e.g. Padmavati Uncut Polki Choker Set">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Collection / Finish</label>
+            <select id="admin-collection">
+              <option value="Kundan">Kundan Meenakari</option>
+              <option value="Polki">Polki / Jadau</option>
+              <option value="Temple">Temple Antique Gold</option>
+              <option value="Diamond">Diamond Fusion</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Wedding Role</label>
+            <select id="admin-role">
+              <option value="Bride">Bride</option>
+              <option value="Groom">Groom</option>
+              <option value="Mother of Bride">Mother of Bride</option>
+              <option value="Bridesmaid">Bridesmaid</option>
+              <option value="Guest">Guest</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>7-Day Base Rent ($)</label>
+            <input type="number" id="admin-rent" required value="180">
+          </div>
+          <div class="form-group">
+            <label>Weekly Ext ($)</label>
+            <input type="number" id="admin-ext" required value="50">
+          </div>
+          <div class="form-group">
+            <label>Deposit ($)</label>
+            <input type="number" id="admin-deposit" required value="180">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>Dimensions</label>
+            <input type="text" id="admin-dimensions" placeholder="e.g. Choker drop: 3 in">
+          </div>
+          <div class="form-group">
+            <label>Weight (Grams)</label>
+            <input type="text" id="admin-weight" placeholder="e.g. Set: 135g">
+          </div>
+        </div>
+
+        <div style="background: var(--mint-bg); border: 1px dashed var(--mint-border); padding: 16px; border-radius: 4px; margin-bottom: 18px;">
+          <label style="font-weight: 700; font-size: 11px; text-transform:uppercase; display: block; margin-bottom: 4px; color:var(--forest);">
+            Multiple Pictures (Upload from device or URL)
+          </label>
+          <input type="file" id="admin-file-input" multiple accept="image/*" onchange="handleFileSelect(event)" style="margin-bottom: 10px;">
+          <input type="text" id="admin-img-urls" placeholder="Or enter comma-separated URLs: https://..., https://..." style="margin-bottom: 6px;">
+          <div id="upload-preview-container" class="upload-preview-strip"></div>
+        </div>
+
+        <button type="submit" class="btn-reserve" style="background:var(--forest); color:#ffffff; font-weight:700;">Publish Item</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let categories = [
+      "Bridal Chokers & Necklaces",
+      "Kundan Jhumkas & Chandbalis",
+      "Antique Bangles & Kadas",
+      "Matha Pattis & Maang Tikkas",
+      "Hathphools & Rings",
+      "Groom Regal Accessories"
+    ];
+
+    let products = [
+      {
+        id: "wp-01",
+        title: "Noor Meenakari Kundan Bridal Choker Set",
+        category: "Bridal Chokers & Necklaces",
+        collection: "Kundan",
+        role: "Bride",
+        rentPrice: 195,
+        extPrice: 55,
+        deposit: 195,
+        dimensions: "Choker Drop: 3.2 in. Adjustable Zari Dori fits all necks.",
+        weight: "Choker: 125g, Earrings: 18g each (Event Grade)",
+        images: [
+          "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1611591475155-42646261057b?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop&q=80"
+        ]
+      },
+      {
+        id: "wp-02",
+        title: "Amritsari Uncut Polki Matha Patti",
+        category: "Matha Pattis & Maang Tikkas",
+        collection: "Polki",
+        role: "Bride",
+        rentPrice: 95,
+        extPrice: 30,
+        deposit: 100,
+        dimensions: "Central Tikka: 2.2 in; Perimeter Band: 11.5 in",
+        weight: "48g (Ultra-lightweight forehead band)",
+        images: [
+          "https://images.unsplash.com/photo-1611591475155-42646261057b?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80"
+        ]
+      },
+      {
+        id: "wp-03",
+        title: "Devi Temple 22K Antique Kadas (Set of 2)",
+        category: "Antique Bangles & Kadas",
+        collection: "Temple",
+        role: "Bride",
+        rentPrice: 90,
+        extPrice: 28,
+        deposit: 95,
+        dimensions: "Size 2.6 (Inner Diameter: 2.37 in)",
+        weight: "74g per pair with handcrafted screw lock",
+        images: [
+          "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop&q=80",
+          "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&auto=format&fit=crop&q=80"
+        ]
+      },
+      {
+        id: "wp-04",
+        title: "Emerald Diamond CZ Fusion Collar Set",
+        category: "Bridal Chokers & Necklaces",
+        collection: "Diamond",
+        role: "Guest",
+        rentPrice: 75,
+        extPrice: 20,
+        deposit: 75,
+        dimensions: "Collar drop: 14 in",
+        weight: "62g set weight",
+        isClearance: true,
+        images: [
+          "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&auto=format&fit=crop&q=80"
+        ]
+      }
+    ];
+
+    let cart = [];
+    let pendingUploadedImages = [];
+
+    // Close open details dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('details.menu-dropdown')) {
+        document.querySelectorAll('details.menu-dropdown').forEach(d => d.removeAttribute('open'));
+      }
+    });
+
+    function syncCategoryElements() {
+      const filterSelect = document.getElementById('filter-type');
+      filterSelect.innerHTML = `<option value="All">All Categories (${categories.length})</option>` +
+        categories.map(c => `<option value="${c}">${c}</option>`).join('');
+
+      const adminSelect = document.getElementById('admin-category-select');
+      adminSelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+
+      const menuList = document.getElementById('menu-categories-list');
+      menuList.innerHTML = `<a onclick="filterByCategory('All')">✦ View All Pieces</a><div class="dropdown-divider"></div>` +
+        categories.map(c => `<a onclick="filterByCategory('${c}')">${c}</a>`).join('');
+    }
+
+    function renderCatalog(items = products) {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = items.map(p => `
+        <div class="product-card">
+          <div class="img-wrap">
+            <img src="${p.images[0]}" alt="${p.title}" class="product-img">
+            <span class="photo-badge">📷 ${p.images.length} photos</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <span class="badge">${p.category}</span>
+              <h3 class="product-title">${p.title}</h3>
+              <div class="price-details">
+                <strong>$${p.rentPrice}.00</strong> / 7-Day Rental
+                <span class="deposit-tag">+$${p.deposit}.00 refundable security deposit</span>
+              </div>
+            </div>
+            <button class="btn-reserve" onclick="openPDP('${p.id}')">Select Dates & Reserve</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openPDP(id) {
+      const product = products.find(p => p.id === id);
+      const container = document.getElementById('pdp-content');
+      
+      const d = new Date();
+      d.setDate(d.getDate() + 3);
+      const minDate = d.toISOString().split('T')[0];
+
+      container.innerHTML = `
+        <div class="gallery-wrap">
+          <img id="main-pdp-view" src="${product.images[0]}" class="main-gallery-img">
+          <div class="thumb-strip">
+            ${product.images.map((img, i) => `
+              <img src="${img}" class="thumb-item ${i === 0 ? 'active' : ''}" onclick="swapGalleryImage(this, '${img}')">
+            `).join('')}
+          </div>
+          <div style="margin-top:10px; font-size:12px; line-height:1.7; background:var(--mint-bg); border:1px solid var(--mint-border); padding:14px; border-radius:4px;">
+            <strong style="color:var(--forest); display:block; margin-bottom:4px;">Vault Specifications:</strong>
+            <p>• Category: ${product.category}</p>
+            <p>• Dimensions: ${product.dimensions}</p>
+            <p>• Weight: ${product.weight}</p>
+            <p>• Sanitization: Posts sterilized in alcohol; microfiber buffed Kundan foil.</p>
+          </div>
+        </div>
+
+        <div>
+          <span class="badge">${product.collection}</span>
+          <span class="badge" style="background:#fff; border-color:#ccc;">${product.role}</span>
+          <h2 style="font-family:var(--font-serif); font-size:26px; color:var(--forest); margin-bottom:8px;">${product.title}</h2>
+          
+          <div style="background:var(--mint-bg); border:1px solid var(--mint-border); padding:14px; border-radius:4px; margin-bottom:18px; font-size:13px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span>7-Day Base Rental:</span>
+              <strong style="color:var(--gold-dark);">$${product.rentPrice}.00</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span>Weekly Extension:</span>
+              <span>+$${product.extPrice}.00 / week</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; color:var(--text-muted);">
+              <span>100% Refundable Deposit:</span>
+              <span>$${product.deposit}.00</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>1. Delivery Target Date (Select 2-3 days prior to event):</label>
+            <input type="date" id="pdp-date" min="${minDate}" value="${minDate}">
+          </div>
+
+          <div class="form-group">
+            <label>2. Rental Period Duration:</label>
+            <select id="pdp-duration" onchange="calculatePDPTotal(${product.rentPrice}, ${product.extPrice}, ${product.deposit})">
+              <option value="1">7 Days (Standard Base)</option>
+              <option value="2">+1 Week Extension (14 Days total)</option>
+              <option value="3">+2 Weeks Extension (21 Days total)</option>
+            </select>
+          </div>
+
+          <div style="border-top:1px dashed var(--mint-border); padding-top:14px; margin-bottom:18px;">
+            <div style="display:flex; justify-content:space-between; font-size:16px; font-weight:700;">
+              <span>Due Today at Checkout:</span>
+              <span id="pdp-total" style="color:var(--gold-dark); font-size:20px;">$${product.rentPrice + product.deposit}.00</span>
+            </div>
+            <small style="color:var(--text-muted);">(Rental Fee + $${product.deposit}.00 Refundable Deposit released 48h after return scan)</small>
+          </div>
+
+          <button class="btn-reserve" style="width:100%; padding:14px;" onclick="addToBag('${product.id}')">Add to Rental Bag</button>
+        </div>
+      `;
+      openModal('pdp-modal');
+    }
+
+    function swapGalleryImage(thumbElement, fullSrc) {
+      document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('active'));
+      thumbElement.classList.add('active');
+      document.getElementById('main-pdp-view').src = fullSrc;
+    }
+
+    function calculatePDPTotal(baseRent, extFee, deposit) {
+      const weeks = parseInt(document.getElementById('pdp-duration').value);
+      const extraWeeks = weeks - 1;
+      const grandTotal = baseRent + (extraWeeks * extFee) + deposit;
+      document.getElementById('pdp-total').innerText = `$${grandTotal}.00`;
+    }
+
+    function handleFileSelect(e) {
+      const files = Array.from(e.target.files);
+      const preview = document.getElementById('upload-preview-container');
+      
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          pendingUploadedImages.push(event.target.result);
+          const img = document.createElement('img');
+          img.src = event.target.result;
+          img.className = 'upload-preview-thumb';
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function handleAdminSubmit(e) {
+      e.preventDefault();
+
+      const customCategory = document.getElementById('admin-new-category').value.trim();
+      let selectedCategory = document.getElementById('admin-category-select').value;
+
+      if (customCategory.length > 0) {
+        if (!categories.includes(customCategory)) {
+          categories.push(customCategory);
+          syncCategoryElements();
+        }
+        selectedCategory = customCategory;
+      }
+
+      const urlInput = document.getElementById('admin-img-urls').value.trim();
+      let imageUrls = [...pendingUploadedImages];
+      
+      if (urlInput.length > 0) {
+        const parsedUrls = urlInput.split(',').map(u => u.trim()).filter(u => u.length > 0);
+        imageUrls = imageUrls.concat(parsedUrls);
+      }
+
+      if (imageUrls.length === 0) {
+        imageUrls.push("https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80");
+      }
+
+      const newItem = {
+        id: "wp-" + (products.length + 1),
+        title: document.getElementById('admin-title').value,
+        category: selectedCategory,
+        collection: document.getElementById('admin-collection').value,
+        role: document.getElementById('admin-role').value,
+        rentPrice: parseFloat(document.getElementById('admin-rent').value),
+        extPrice: parseFloat(document.getElementById('admin-ext').value),
+        deposit: parseFloat(document.getElementById('admin-deposit').value),
+        dimensions: document.getElementById('admin-dimensions').value || "Custom Sizing",
+        weight: document.getElementById('admin-weight').value || "Standard Weight",
+        images: imageUrls
+      };
+
+      products.unshift(newItem);
+      renderCatalog();
+      closeModal('admin-modal');
+
+      e.target.reset();
+      pendingUploadedImages = [];
+      document.getElementById('upload-preview-container').innerHTML = '';
+      alert(`Success! "${newItem.title}" published under "${selectedCategory}".`);
+    }
+
+    function applyFilters() {
+      const type = document.getElementById('filter-type').value;
+      const coll = document.getElementById('filter-collection').value;
+      const role = document.getElementById('filter-role').value;
+
+      const filtered = products.filter(p => {
+        return (type === 'All' || p.category === type) &&
+               (coll === 'All' || p.collection === coll) &&
+               (role === 'All' || p.role === role);
+      });
+      renderCatalog(filtered);
+    }
+
+    function filterByCategory(cat) {
+      document.querySelectorAll('details.menu-dropdown').forEach(d => d.removeAttribute('open'));
+      if (cat === 'All') {
+        document.getElementById('filter-type').value = 'All';
+        renderCatalog();
+      } else {
+        document.getElementById('filter-type').value = cat;
+        renderCatalog(products.filter(p => p.category === cat));
+      }
+    }
+
+    function filterByRole(role) {
+      document.querySelectorAll('details.menu-dropdown').forEach(d => d.removeAttribute('open'));
+      document.getElementById('filter-role').value = role;
+      renderCatalog(products.filter(p => p.role === role));
+    }
+
+    function filterByCollection(coll) {
+      document.querySelectorAll('details.menu-dropdown').forEach(d => d.removeAttribute('open'));
+      document.getElementById('filter-collection').value = coll;
+      renderCatalog(products.filter(p => p.collection === coll));
+    }
+
+    function filterClearance() {
+      renderCatalog(products.filter(p => p.isClearance));
+    }
+
+    function resetFilters() {
+      document.getElementById('filter-type').value = 'All';
+      document.getElementById('filter-collection').value = 'All';
+      document.getElementById('filter-role').value = 'All';
+      renderCatalog();
+    }
+
+    function addToBag(productId) {
+      const product = products.find(p => p.id === productId);
+      const date = document.getElementById('pdp-date').value;
+      const weeks = parseInt(document.getElementById('pdp-duration').value);
+      const extraWeeks = weeks - 1;
+      const rentalFee = product.rentPrice + (extraWeeks * product.extPrice);
+
+      cart.push({
+        ...product,
+        rentalFee,
+        durationDays: weeks * 7,
+        targetDate: date
+      });
+
+      closeModal('pdp-modal');
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function updateCartUI() {
+      document.getElementById('cart-count').innerText = cart.length;
+      const itemsContainer = document.getElementById('cart-items');
+      
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = '<p style="color:var(--text-muted); font-size:13px; text-align:center; margin-top:50px;">Your rental bag is empty.</p>';
+        document.getElementById('cart-subtotal').innerText = '$0.00';
+        document.getElementById('cart-deposit').innerText = '$0.00';
+        document.getElementById('cart-grand-total').innerText = '$0.00';
+        return;
+      }
+
+      let rentSum = 0;
+      let depositSum = 0;
+
+      itemsContainer.innerHTML = cart.map((item, idx) => {
+        rentSum += item.rentalFee;
+        depositSum += item.deposit;
+        return `
+          <div style="border-bottom:1px solid var(--mint-border); padding-bottom:14px; margin-bottom:14px;">
+            <div style="display:flex; justify-content:space-between; font-weight:700; font-size:14px; color:var(--forest);">
+              <span>${item.title}</span>
+              <button onclick="removeFromCart(${idx})" style="border:none;background:none;color:#888;font-size:18px;cursor:pointer;">&times;</button>
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Delivery: ${item.targetDate} (${item.durationDays} Days)</div>
+            <div style="font-size:12px; color:var(--gold-dark); margin-top:2px;">Rental: $${item.rentalFee}.00 | Deposit: $${item.deposit}.00</div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cart-subtotal').innerText = `$${rentSum.toFixed(2)}`;
+      document.getElementById('cart-deposit').innerText = `$${depositSum.toFixed(2)}`;
+      document.getElementById('cart-grand-total').innerText = `$${(rentSum + depositSum).toFixed(2)}`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function toggleCart(isOpen) {
+      const drawer = document.getElementById('cart-drawer');
+      isOpen ? drawer.classList.add('open') : drawer.classList.remove('open');
+    }
+
+    function executeCheckout() {
+      if (cart.length === 0) return alert('Your bag is empty.');
+      alert('Order Placed with WearPhanis:\n- Free Outbound Ground Shipping Selected\n- Prepaid return shipping label generated for USPS/UPS\n- 100% Security deposit releases within 48h of return delivery.');
+      cart = [];
+      updateCartUI();
+      toggleCart(false);
+    }
+
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    syncCategoryElements();
+    renderCatalog();
+  </script>
+</body>
+</html>
